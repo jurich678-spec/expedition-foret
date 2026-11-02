@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#3d5a2a">
+<meta name="theme-color" content="#2a9a52">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Expédition Forêt</title>
@@ -23,6 +23,16 @@
   --radius:0px;--shadow:0 6px 0 rgba(0,0,0,.25);--border:4px solid var(--line);
   --title:'Pixel','Nunito',system-ui,sans-serif;--body:'Nunito',system-ui,sans-serif;
 }
+body.t-briques{
+  --bg1:#4fc3ff;--bg2:#c4ecff;--ink:#1c2633;--ink2:#566476;--panel:#ffffff;--panel2:#eef3f8;--line:#1c2633;
+  --acc:#00b26a;--acc2:#008a52;--radius:14px;--shadow:0 6px 0 rgba(28,38,51,.35);--border:3px solid #1c2633;
+  --title:'Nunito',system-ui,sans-serif;
+}
+body.t-briques h1,body.t-briques h2,body.t-briques .btn{font-weight:900}
+body.t-briques .btn{box-shadow:inset 0 -6px 0 rgba(0,0,0,.18),0 6px 0 rgba(28,38,51,.4)}
+.pv-briques{background:linear-gradient(#4fc3ff,#c4ecff 62%,#3cc46a 62%,#3cc46a 74%,#2a9a52 74%)}
+.pv-briques:before,.pv-briques:after{content:'';position:absolute;width:26px;height:26px;border-radius:5px;background:#ff5a5a;box-shadow:inset -5px -5px 0 rgba(0,0,0,.2),inset 4px 4px 0 rgba(255,255,255,.4);left:25%;top:30%;animation:fly 2.6s ease-in-out infinite alternate}
+.pv-briques:after{background:#ffd23f;left:62%;top:22%;width:20px;height:20px;animation-delay:-1.3s}
 body.t-aurore{
   --bg1:#081430;--bg2:#13284d;--ink:#eef4ff;--ink2:#a9b8d6;--panel:rgba(20,34,66,.82);--panel2:rgba(40,62,110,.7);--line:#6fe3c1;
   --acc:#4fd6a8;--acc2:#2aa883;--radius:18px;--shadow:0 0 24px rgba(79,214,168,.25);--border:2px solid rgba(111,227,193,.55);
@@ -200,9 +210,24 @@ body.t-jungle .mapwrap path.c{fill:#2f6a3c;stroke:#5c9a5a}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (orientation:landscape) and (min-width:900px){.deck{height:260px}}
 
+.aura-verte{filter:drop-shadow(0 0 4px #6cff8a) drop-shadow(0 0 12px #2bff5a) drop-shadow(0 0 20px #2bff5a)}
+.aura-doree{filter:drop-shadow(0 0 4px #ffd84a) drop-shadow(0 0 12px #ffb800) drop-shadow(0 0 20px #ffb800)}
+.aura-arc{filter:drop-shadow(0 0 5px #ff5ab4) drop-shadow(0 0 14px #ff5ab4) drop-shadow(0 0 22px #ff5ab4);animation:hue 3s linear infinite}
+.aura-arc.bob{animation:hue 3s linear infinite,bob 1.6s ease-in-out infinite}
+@keyframes hue{to{filter:drop-shadow(0 0 4px #ff5ab4) drop-shadow(0 0 9px #ff5ab4) hue-rotate(360deg)}}
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.item{padding:12px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:800}
+.item.worn{outline:5px solid var(--gold)}
+.item .price{font-size:15px}
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.bdg{width:96px;text-align:center;font-size:13px;font-weight:800;padding:8px 4px;border-radius:12px;border:2px solid var(--line);background:var(--panel2)}
+.bdg .pix{margin:0 auto 4px}
+.bdg.off{opacity:.35;filter:grayscale(1)}
+.bdg.new{outline:4px solid var(--gold);animation:pop .5s}
+
 </style>
 </head>
-<body class="t-blocs">
+<body class="t-briques">
 <canvas id="bg"></canvas>
 <div id="app"></div>
 <canvas id="fx"></canvas>
@@ -554,6 +579,34 @@ function drawZoneBand(ctx, zi, x0, y0, w, h, growth, s) {
     const g = Math.max(0, Math.min(1, growth * 1.6 - t.d * 0.6));
     if (g > 0) drawTree(ctx, t.sp, t.x, t.y, s, g, zi >= 3);
   });
+}
+
+/* ---------- Accessoires du compagnon (boutique) ---------- */
+const HATS = {
+  feuille: { name: 'Feuille porte-bonheur', price: 3, grid: ['..............', '.......gg.....', '......gGg.....', '......B.......'] },
+  casquette: { name: 'Casquette', price: 5, grid: ['..............', '....AAAAAA....', '...AAAAAAAA...', '...AAAAAAAAAAA'] },
+  tuque: { name: 'Tuque à pompon', price: 6, grid: ['......WW......', '....RRRRRR....', '...RRRRRRRR...', '...WWWWWWWW...'] },
+  explo: { name: 'Chapeau d’explo', price: 8, grid: ['..............', '....TTTTTT....', '....NNNNNN....', '.TTTTTTTTTTTT.'] },
+  fete: { name: 'Chapeau de fête', price: 8, grid: ['......Y.......', '.....PP.......', '....PYPP......', '...PPPPYPP....'] },
+  couronne: { name: 'Couronne', price: 15, grid: ['...Y.Y..Y.Y...', '...YYYYYYYY...', '...YRYYYYAY...', '...YYYYYYYY...'] }
+};
+const AURAS = {
+  verte: { name: 'Aura verte', price: 5, color: '#6cff8a' },
+  doree: { name: 'Aura dorée', price: 10, color: '#ffd84a' },
+  arc: { name: 'Aura arc-en-ciel', price: 20, color: '#ff5ab4' }
+};
+function companionGrid(comp, hat) {
+  const g = COMPANIONS[comp].grid.slice();
+  const pad = '..............';
+  const rows = [pad, pad, pad].concat(g);
+  if (hat && HATS[hat]) {
+    HATS[hat].grid.forEach((line, r) => {
+      const row = rows[r].split('');
+      line.split('').forEach((c, x) => { if (c !== '.') row[x] = c; });
+      rows[r] = row.join('');
+    });
+  }
+  return rows;
 }
 
 /* =========================================================
@@ -1060,7 +1113,7 @@ const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce
 
 /* ---------- État et sauvegarde (reste sur l'appareil) ---------- */
 const KEY = 'expeditionForet.v1';
-const DEFAULT_STATE = () => ({ v: 1, onboarded: false, name: '', theme: 'blocs', comp: 'renard', compName: '', sound: true, vibrate: true, examDate: EXAM_DATE_DEFAULT, items: {}, seeds: 3, forest: [], sessions: {}, exams: [], lastSeed: {} });
+const DEFAULT_STATE = () => ({ v: 1, onboarded: false, name: '', theme: 'briques', comp: 'renard', compName: '', sound: true, vibrate: true, examDate: EXAM_DATE_DEFAULT, items: {}, seeds: 3, forest: [], sessions: {}, exams: [], lastSeed: {}, acc: [], wear: { hat: '', aura: '' }, badges: [], newBadges: [] });
 let S = load();
 function load() { try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.v === 1) return Object.assign(DEFAULT_STATE(), s); } catch (e) { } return DEFAULT_STATE(); }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } }
@@ -1130,10 +1183,10 @@ function bgInit() {
 }
 function setBiome(m) {
   let mode = m;
-  if (m === 'default') mode = { blocs: 'pixels', aurore: 'aurora', jungle: 'fireflies' }[S.theme];
+  if (m === 'default') mode = { blocs: 'pixels', aurore: 'aurora', jungle: 'fireflies', briques: 'bricks' }[S.theme];
   if (BG.mode === mode && BG.parts.length) return;
   BG.mode = mode; BG.parts = [];
-  const n = REDUCED ? 0 : ({ snow: 90, rain: 110, fireflies: 34, aurora: 90, stars: 120, pixels: 26 }[mode] || 30);
+  const n = REDUCED ? 0 : ({ snow: 90, rain: 110, fireflies: 34, aurora: 90, stars: 120, pixels: 26, bricks: 18 }[mode] || 30);
   for (let i = 0; i < n; i++) BG.parts.push(newPart(true));
 }
 function newPart(init) {
@@ -1143,6 +1196,7 @@ function newPart(init) {
     case 'rain': return { x: r() * w, y: init ? r() * h : -20, vx: -1.5, vy: 9 + r() * 6, s: 10 + r() * 14 };
     case 'fireflies': return { x: r() * w, y: r() * h, vx: (r() - .5) * .5, vy: (r() - .5) * .5, s: 2 + r() * 2.5, ph: r() * 6 };
     case 'aurora': case 'stars': return { x: r() * w, y: r() * h * (BG.mode === 'aurora' ? .7 : 1), s: .6 + r() * 1.8, ph: r() * 6 };
+    case 'bricks': return { x: r() * w, y: init ? r() * h : h + 30, vx: (r() - .5) * .3, vy: -(.25 + r() * .45), s: 12 + r() * 16, c: pick(['#ff5a5a', '#ffd23f', '#3cc46a', '#2f8cff', '#b06bff', '#ff9a3c']), ph: r() * 6 };
     default: return { x: r() * w, y: init ? r() * h : h + 20, vx: (r() - .5) * .3, vy: -(.2 + r() * .5), s: 6 + Math.floor(r() * 3) * 4, c: pick(['#ffffff', '#c9f0a8', '#9fd88a', '#f6e27a']), rot: 0 };
   }
 }
@@ -1157,6 +1211,11 @@ function loop(ts) {
         case 'snow': p.x += p.vx + Math.sin(BG.t + p.ph) * .3; p.y += p.vy; c.fillStyle = 'rgba(255,255,255,.85)'; if (S.theme === 'blocs') c.fillRect(p.x, p.y, p.s, p.s); else { c.beginPath(); c.arc(p.x, p.y, p.s / 2, 0, 7); c.fill(); } if (p.y > h + 10) BG.parts[i] = newPart(); break;
         case 'rain': p.x += p.vx; p.y += p.vy; c.strokeStyle = 'rgba(190,220,255,.45)'; c.lineWidth = S.theme === 'blocs' ? 3 : 1.5; c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(p.x + p.vx * 2, p.y + p.s); c.stroke(); if (p.y > h) BG.parts[i] = newPart(); break;
         case 'fireflies': { p.x += p.vx + Math.sin(BG.t * .7 + p.ph) * .4; p.y += p.vy + Math.cos(BG.t * .5 + p.ph) * .3; if (p.x < 0) p.x = w; if (p.x > w) p.x = 0; if (p.y < 0) p.y = h; if (p.y > h) p.y = 0; const a = .35 + .65 * Math.max(0, Math.sin(BG.t * 2 + p.ph)); const g = c.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.s * 5); g.addColorStop(0, `rgba(233,255,138,${a})`); g.addColorStop(1, 'rgba(233,255,138,0)'); c.fillStyle = g; c.fillRect(p.x - p.s * 5, p.y - p.s * 5, p.s * 10, p.s * 10); break; }
+        case 'bricks': { p.x += p.vx + Math.sin(BG.t * .8 + p.ph) * .25; p.y += p.vy; const s = p.s, d = s * .35; c.globalAlpha = .55;
+          c.fillStyle = p.c; c.fillRect(p.x, p.y, s, s);
+          c.fillStyle = 'rgba(255,255,255,.45)'; c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(p.x + d, p.y - d); c.lineTo(p.x + s + d, p.y - d); c.lineTo(p.x + s, p.y); c.fill();
+          c.fillStyle = 'rgba(0,0,0,.22)'; c.beginPath(); c.moveTo(p.x + s, p.y); c.lineTo(p.x + s + d, p.y - d); c.lineTo(p.x + s + d, p.y + s - d); c.lineTo(p.x + s, p.y + s); c.fill();
+          c.globalAlpha = 1; if (p.y < -40) BG.parts[i] = newPart(); break; }
         case 'aurora': case 'stars': { const a = .3 + .7 * Math.abs(Math.sin(BG.t * .8 + p.ph)); c.fillStyle = `rgba(255,255,255,${a})`; c.fillRect(p.x, p.y, p.s, p.s); break; }
         default: p.x += p.vx + Math.sin(BG.t + i) * .2; p.y += p.vy; c.globalAlpha = .55; c.fillStyle = p.c; c.fillRect(Math.round(p.x / 2) * 2, Math.round(p.y / 2) * 2, p.s, p.s); c.globalAlpha = 1; if (p.y < -20) BG.parts[i] = newPart();
       }
@@ -1226,11 +1285,11 @@ async function go(render) {
   c.clearRect(0, 0, w, h); busy = false;
 }
 function mount(html) { const app = $('#app'); app.innerHTML = ''; const node = typeof html === 'string' ? el(html) : html; app.appendChild(node); return node; }
-function applyTheme() { document.body.className = 't-' + S.theme; const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = { blocs: '#3d5a2a', aurore: '#081430', jungle: '#0f3b25' }[S.theme]; }
+function applyTheme() { document.body.className = 't-' + S.theme; const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = { blocs: '#3d5a2a', aurore: '#081430', jungle: '#0f3b25', briques: '#2a9a52' }[S.theme]; }
 
 /* ---------- Compagnon ---------- */
 const compName = () => S.compName || COMPANIONS[S.comp].name;
-const compSVG = (size = 72, cls = 'bob') => gridSVG(COMPANIONS[S.comp].grid, size, `class="pix ${cls}"`);
+const compSVG = (size = 72, cls = 'bob', hat = S.wear && S.wear.hat, aura = S.wear && S.wear.aura) => gridSVG(companionGrid(S.comp, hat), size, `class="pix ${cls} ${aura ? 'aura-' + aura : ''}"`);
 const PRAISE = ['Bravo, {n} !', 'Exactement !', 'Tu l’as !', 'Super bien !', 'Parfait !', 'Bien joué, {n} !', 'Wow, solide !', 'C’est ça !'];
 const OOPS = ['Pas tout à fait…', 'Presque !', 'Oups, pas cette fois.', 'Pas grave, on la retient.'];
 const fmt = s => s.replace('{n}', S.name || 'explo');
@@ -1274,7 +1333,7 @@ function screenName() {
   $('#nx', n).onclick = () => { S.name = $('#nm', n).value.trim().slice(0, 18) || 'Explo'; save(); sfx('tap'); go(screenTheme); };
 }
 function screenTheme(fromSettings) {
-  const opts = [['blocs', 'Blocs', 'Un monde en blocs et en pixels'], ['aurore', 'Aurore boréale', 'La nuit, des lumières qui dansent'], ['jungle', 'Jungle', 'Vert profond et lucioles']];
+  const opts = [['briques', 'Briques', 'Des briques colorées partout'], ['blocs', 'Blocs', 'Un monde en blocs et en pixels'], ['aurore', 'Aurore boréale', 'La nuit, des lumières qui dansent'], ['jungle', 'Jungle', 'Vert profond et lucioles']];
   const n = mount(`<div class="screen fadein">
     <h2>${fromSettings ? 'Ton ambiance' : 'Étape 2 sur 4 · Choisis ton ambiance'}</h2>
     <p class="muted">Touche une carte pour l’essayer. Tu pourras la changer quand tu veux.</p>
@@ -1328,14 +1387,18 @@ function screenHome() {
       <button class="btn big" id="b-session">${icon('star', 34)}<span>Séance du jour<small>${due ? `${Math.min(due, 28)} défis qui t’attendent · environ 15 min` : 'Tout est à jour pour aujourd’hui'}</small></span></button>
       <button class="btn big alt" id="b-map">${icon('map', 34)}<span>L’expédition<small>Choisis ta quête parmi les 8</small></span></button>
       <button class="btn big alt" id="b-forest">${icon('tree', 34)}<span>Ma forêt<small>Plante tes graines</small></span></button>
+      <button class="btn big alt" id="b-shop">${icon('star', 34)}<span>Boutique<small>Habille ${esc(compName())} avec tes graines</small></span></button>
       <button class="btn big alt" id="b-exam">${icon('lab', 34)}<span>Examen blanc<small>Les 11 questions, comme le vrai</small></span></button>
     </div>
+    <div class="panel"><h3>Mes badges · ${S.badges.length}/${BADGES.length}</h3><div class="badges" style="margin-top:10px">${BADGES.map(b => `<div class="bdg ${S.badges.includes(b.id) ? '' : 'off'} ${(S.newBadges || []).includes(b.id) ? 'new' : ''}">${icon(b.icon, 36)}${esc(b.name)}</div>`).join('')}</div></div>
     <div class="panel"><h3>Mon plan jusqu’à l’examen</h3><div class="days" style="margin-top:10px">${days.join('')}</div></div>
     <div class="row"><span class="grow"></span><button class="btn ghost" id="b-set">Réglages</button></div></div>`);
   $('#b-session', n).onclick = () => { sfx('tap'); startSession(); };
   $('#b-map', n).onclick = () => { sfx('tap'); go(screenMap); };
   $('#b-forest', n).onclick = () => { sfx('tap'); go(screenForest); };
   $('#b-exam', n).onclick = () => { sfx('tap'); startExam(); };
+  $('#b-shop', n).onclick = () => { sfx('tap'); go(screenShop); };
+  if ((S.newBadges || []).length) { setTimeout(() => { sfx('win'); confetti(); }, 400); S.newBadges = []; save(); }
   $('#b-set', n).onclick = () => { sfx('tap'); go(screenSettings); };
 }
 
@@ -1444,10 +1507,11 @@ function showFeedback(ok, info, gained, next) {
 function finishRun(run, quit) {
   const total = run.results.length, good = run.results.filter(r => r.ok).length;
   if (total) { S.sessions[dayStr()] = (S.sessions[dayStr()] || 0) + 1; }
+  if (run.opt.mode === 'exam' && total) S.exams.push({ d: dayStr(), score: Math.round(100 * good / total) });
+  const nb = checkBadges();
   let examBlock = '';
   if (run.opt.mode === 'exam' && total) {
     const score = Math.round(100 * good / total);
-    S.exams.push({ d: dayStr(), score });
     const byQ = {};
     run.results.forEach(r => { const k = r.q || '?'; byQ[k] = byQ[k] || [0, 0]; byQ[k][1]++; if (r.ok) byQ[k][0]++; });
     const weak = Object.entries(byQ).filter(([, v]) => v[0] < v[1]).map(([k]) => k);
@@ -1461,6 +1525,7 @@ function finishRun(run, quit) {
     const n = mount(`<div class="screen fadein">
       <div class="panel hero">${compSVG(90, 'hop')}<div class="grow"><h2>${quit ? 'Pause bien méritée' : 'Expédition terminée'}</h2><p>${esc(compName())} : « ${total ? `${good} bonne${good > 1 ? 's' : ''} réponse${good > 1 ? 's' : ''} sur ${total}.` : 'À la prochaine !'} ${good === total && total ? 'Impressionnant, ' + esc(S.name) + '.' : 'Chaque erreur d’aujourd’hui, c’est une réponse que tu vas retenir.'} »</p></div></div>
       ${examBlock}
+      ${nb.length ? `<div class="panel"><h3>Nouveau badge${nb.length > 1 ? 's' : ''}</h3><div class="badges" style="margin-top:10px">${nb.map(b => `<div class="bdg new">${icon(b.icon, 40)}${esc(b.name)}</div>`).join('')}</div></div>` : ''}
       ${run.seeds ? `<div class="panel row">${icon('seed', 40)}<p class="grow"><b>+${run.seeds} graine${run.seeds > 1 ? 's' : ''}</b> à planter dans ta forêt.</p><button class="btn" id="pl">Planter</button></div>` : ''}
       <div class="row"><button class="btn alt" id="hm">Accueil</button><span class="grow"></span><button class="btn" id="mp">L’expédition</button></div></div>`);
     if (!quit && total) { sfx('win'); confetti(); }
@@ -1511,7 +1576,7 @@ function screenForest() {
     if (S.seeds <= 0) { card.classList.add('shake'); setTimeout(() => card.classList.remove('shake'), 400); $('#msg', n).textContent = 'Plus de graines. Fais une séance pour en gagner.'; sfx('bad'); return; }
     const zone = ZONE_OF[sp.fam], [a, b] = ZONE_X[zone];
     const t = { sp: k, x: a + .03 + Math.random() * (b - a - .06), y: Math.random() };
-    S.forest.push(t); S.seeds--; save();
+    S.forest.push(t); S.seeds--; save(); if (checkBadges().length) setTimeout(() => { sfx('win'); confetti(); $('#msg', n).innerHTML += ' <b>Nouveau badge : Jardinière.</b>'; }, 800);
     $('#sd', n).innerHTML = icon('seed', 20) + ' ' + S.seeds;
     $('#msg', n).innerHTML = `<b>${sp.name}</b> → ${ZONE_NAME[zone]} (c’est un ${FAMILIES[sp.fam].toLowerCase()}). ${sp.fact}`;
     sfx('plant'); buzz(20);
@@ -1520,6 +1585,49 @@ function screenForest() {
     const fr = (tt) => { const g = Math.min(1, (tt - t0) / 700); draw({ t, g: 1 - Math.pow(1 - g, 3) }); if (g < 1) anim = requestAnimationFrame(fr); };
     anim = requestAnimationFrame(fr);
   }
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+const BADGES = QUESTS.map(q => ({ id: 'q-' + q.key, name: q.title, icon: q.icon, ok: () => masteryPct(q.key) === 100 })).concat([
+  { id: 'premiere', name: 'Première séance', icon: 'star', ok: () => Object.keys(S.sessions).length >= 1 },
+  { id: 'trois-jours', name: '3 jours d’étude', icon: 'seed', ok: () => Object.keys(S.sessions).length >= 3 },
+  { id: 'jardin', name: 'Jardinière : 10 arbres', icon: 'tree', ok: () => S.forest.length >= 10 },
+  { id: 'style', name: 'Premier accessoire', icon: 'leaf', ok: () => (S.acc || []).length >= 1 },
+  { id: 'examen90', name: 'Examen blanc 90 %', icon: 'lab', ok: () => (S.exams || []).some(e => e.score >= 90) }
+]);
+function checkBadges() {
+  const fresh = BADGES.filter(b => !S.badges.includes(b.id) && b.ok());
+  fresh.forEach(b => { S.badges.push(b.id); S.newBadges = (S.newBadges || []).concat(b.id); });
+  if (fresh.length) save();
+  return fresh;
+}
+
+/* =========================================================
+   BOUTIQUE
+   ========================================================= */
+function screenShop() {
+  setBiome('default');
+  const all = Object.entries(HATS).map(([k, v]) => ({ k, slot: 'hat', ...v })).concat(Object.entries(AURAS).map(([k, v]) => ({ k, slot: 'aura', ...v })));
+  const render = () => {
+    const n = mount(`<div class="screen fadein">
+      <div class="topbar"><button class="btn alt" id="bk">Retour</button><h2 class="grow">Boutique</h2><span class="chip">${icon('seed', 20)} ${S.seeds}</span></div>
+      <div class="panel hero center" style="justify-content:center"><div id="big">${compSVG(150)}</div><div><h3>${esc(compName())}</h3><p class="muted">Touche un objet pour l’acheter, puis pour le porter ou le retirer. Tes graines servent aussi à planter des arbres : à toi de choisir.</p></div></div>
+      <div class="shop">${all.map(it => { const own = S.acc.includes(it.k), worn = S.wear[it.slot] === it.k;
+        const prev = it.slot === 'hat' ? compSVG(70, '', it.k, '') : compSVG(70, '', '', it.k);
+        return `<div class="panel item ${worn ? 'worn' : ''}" data-k="${it.k}" data-slot="${it.slot}">${prev}<span>${esc(it.name)}</span><span class="price chip">${own ? (worn ? 'Porté' : 'À toi') : icon('seed', 16) + ' ' + it.price}</span></div>`; }).join('')}</div>
+      <div id="msg" class="fact">${S.acc.length ? 'Ta collection : ' + S.acc.length + ' objet' + (S.acc.length > 1 ? 's' : '') + '.' : 'Ton premier accessoire débloque un badge.'}</div></div>`);
+    $('#bk', n).onclick = () => go(screenHome);
+    $$('.item', n).forEach(d => d.onclick = () => {
+      const it = all.find(x => x.k === d.dataset.k);
+      if (S.acc.includes(it.k)) { S.wear[it.slot] = S.wear[it.slot] === it.k ? '' : it.k; save(); sfx('tap'); render(); burstAt($('#big'), 20); return; }
+      if (S.seeds < it.price) { d.classList.add('shake'); setTimeout(() => d.classList.remove('shake'), 400); sfx('bad'); $('#msg', n).textContent = `Il te manque ${it.price - S.seeds} graine${it.price - S.seeds > 1 ? 's' : ''}. Une séance du jour t’en donnera.`; return; }
+      S.seeds -= it.price; S.acc.push(it.k); S.wear[it.slot] = it.k; save(); checkBadges();
+      sfx('win'); buzz([20, 40, 20]); render(); burstAt($('#big'), 40, 'gold');
+    });
+  };
+  render();
 }
 
 /* ---------- Démarrage ---------- */
