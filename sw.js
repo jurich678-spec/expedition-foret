@@ -1,4 +1,4 @@
-const C='foret-202611250639';const F=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png'];
+const C='foret-202611260557';const F=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 // Toujours la version du réseau quand il y en a un (sans passer par la mémoire du navigateur) ; la copie locale sert hors ligne.
