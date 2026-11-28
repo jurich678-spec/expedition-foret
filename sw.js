@@ -1,4 +1,4 @@
-const C='foret-202611262101';const F=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png"];const X=["astronomie-3d.html"];
+const C='foret-202611280654';const F=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png"];const X=["astronomie-3d.html"];
 // F : l'appli elle-même (tout ou rien). X : les fichiers en plus, comme le modèle 3D : s'il en manque un, l'appli s'installe quand même.
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F).then(()=>Promise.all(X.map(u=>c.add(new Request(u,{cache:'reload'})).catch(()=>{}))))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});

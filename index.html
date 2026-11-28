@@ -4165,7 +4165,7 @@ const pick = a => a[Math.floor(Math.random() * a.length)];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-const APP_VERSION = "2026-11-26T21:01";
+const APP_VERSION = "2026-11-28T06:54";
 let LITE = false; // mode léger : moins d'animations, pour que tout reste fluide sur un appareil lent
 
 /* ---------- État et sauvegarde (reste sur l'appareil) ---------- */
