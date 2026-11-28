@@ -540,6 +540,46 @@ body.t-grunge .fb-title,body.t-grunge .rclock,body.t-grunge .score{font-weight:4
   .garage .gcell{height:40px}
 }
 
+/* ---------- science : astronomie ---------- */
+.tn{display:inline-block;font-size:.7em;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:#2b3f8a;color:#fff;padding:2px 9px;border-radius:999px;margin-right:4px;vertical-align:.14em;white-space:nowrap}
+.dm{font-weight:900}
+.banner.bb-astro{background:linear-gradient(135deg,#0b1433,#272c78 68%,#4a2f7a);color:#eef4ff}
+.banner.bb-astro .lvl{background:rgba(255,255,255,.14);color:#eef4ff;border-color:rgba(255,255,255,.35)}
+.banner.bb-astro .lvl.on{background:#fffaf0;color:#1d2330;border-color:#f2b705;box-shadow:0 4px 0 rgba(0,0,0,.45)}
+body.chb-astro .subj{background:#3b2f8a}
+.newbox.nsub{border-color:#3b2f8a;outline-color:#3b2f8a}
+.ascards{display:grid;gap:12px}
+.ascard{border:var(--border);border-radius:var(--radius);padding:12px 14px;background:var(--panel2)}
+.ascard h4{font-family:var(--title);font-size:clamp(18px,3vw,23px);margin:0 0 6px}
+.ascard h4{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.a3{display:none;margin-left:auto;font:900 14px var(--body);color:#eef4ff;background:#1b2658;border:2px solid #4fd6a8;border-radius:999px;padding:6px 14px;min-height:40px;cursor:pointer;white-space:nowrap}
+body.has3d .ascard .a3{display:inline-flex;align-items:center}
+.overlay .a3,.feedback .a3{display:none!important}
+.asdef{font-size:clamp(16px,2.7vw,20px);font-weight:700;line-height:1.45}
+.asdef.plus{font-weight:600;margin-top:6px}
+.asmots{font-size:clamp(15px,2.5vw,18px);margin-top:8px;padding-top:8px;border-top:2px dashed var(--ink2);color:var(--ink2)}
+.asvgw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px}
+.asvg{display:block;width:100%;min-width:540px;max-width:900px;margin:0 auto;height:auto;border-radius:14px}
+.asscale{display:flex;flex-direction:column;gap:8px;align-items:center}
+.asscale>div{width:var(--w);min-width:min(100%,250px);background:var(--c);color:#fff;border-radius:12px;padding:8px 14px;text-align:center;border:2px solid rgba(255,255,255,.35)}
+.asscale b{display:block;font-size:18px}
+.asscale span{font-size:14px;font-weight:700}
+/* mettre dans l'ordre */
+.seqchain{display:grid;gap:8px}
+.seqslot{display:flex;align-items:center;gap:12px;padding:8px 14px;border:3px dashed var(--line);border-radius:var(--radius);background:rgba(255,255,255,.3);min-height:52px;font-weight:800;font-size:clamp(16px,2.7vw,20px);opacity:.7;color:var(--ink)}
+.seqslot b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--line);color:var(--panel);display:grid;place-items:center;font-family:var(--title)}
+.seqslot.on{border-style:solid;background:var(--panel);opacity:1}
+.seqslot.on b{background:var(--good);color:#fff}
+.seqslot span b{all:unset;font-weight:900}
+.seqchips{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.seqchips .opt b{font-weight:900}
+/* modèle 3D dans un cadre, par-dessus l'appli */
+.overlay.o3d{display:flex;flex-direction:column;overflow:hidden;background:#081430;z-index:46}
+.o3dbar{flex:none;display:flex;align-items:center;gap:12px;padding:8px 10px;background:#0b1433;color:#eef4ff;min-height:56px}
+.o3dbar .btn{padding:8px 14px;font-size:17px}
+.o3dt{font-weight:800;font-size:15px}
+.o3d iframe{flex:1;min-height:0;width:100%;border:0;background:#081430}
+
 </style>
 </head>
 <body class="t-briques">
@@ -1613,6 +1653,7 @@ const BIOME_LOOK = {
   forest: { sky: ['#8fd3f5', '#dff3ff'], far: '#6fa35a', far2: '#5a8c48', ground: '#7a5a34', ground2: '#5fa83f', trees: ['erable', 'sapin', 'bouleau', 'chene', 'epinette'], obstacles: ['tronc', 'roche'], splash: ['#6b4a26', '#8a6a3a'] },
   ocean: { sky: ['#7cc8f2', '#e2f5ff'], far: '#3f8fd0', far2: '#6fb3e6', ground: '#7a4f22', ground2: '#b07a3c', trees: [], obstacles: ['vague', 'baril'], splash: ['#3c8fd0', '#9fd4ff', '#ffffff'] },
   city: { sky: ['#9fd0f0', '#eef7ff'], far: '#9aa7b8', far2: '#b9c4d2', ground: '#4a4f5a', ground2: '#c9ccd2', trees: [], obstacles: ['cone', 'boite'], splash: ['#c9ccd2', '#8a8f99'] },
+  space: { sky: ['#050a1e', '#1b2658'], far: '#3d4668', far2: '#2a3254', ground: '#70768c', ground2: '#b9bfd0', trees: [], obstacles: ['cratere', 'caillou'], splash: ['#b9bfd0', '#8a90a6', '#ffffff'] },
   jungle: { sky: ['#7fc9a8', '#d8f3e2'], far: '#2f7d4a', far2: '#246b3c', ground: '#5a4026', ground2: '#3f8f4a', trees: ['palmier', 'hevea', 'acajou', 'cocotier', 'cacaoyer'], obstacles: ['eau', 'tronc'], splash: ['#3c8fd0', '#9fd4ff'] }
 };
 const LOOK_DEFAULT = { h: '#3b2414', s: '#f1c27d', c: '#2f8cff', p: '#2a3550', m: '#c0605a' };
@@ -1635,6 +1676,12 @@ function makeScene() {
       c.fillStyle = '#2f7fc4'; c.fillRect(0, 96, 720, 24); c.fillStyle = 'rgba(255,255,255,.35)'; for (let i = 0; i < 30; i++) c.fillRect(rnd() * 700, 98 + rnd() * 20, 12, 2);
       [[90, 3], [430, 2]].forEach(([x, n]) => { c.fillStyle = '#e8d9a8'; c.fillRect(x - 40, 92, 80, 8); c.fillStyle = '#6b8a3a'; c.fillRect(x - 30, 88, 60, 6); for (let i = 0; i < n; i++) drawTree(c, 'palmier', x - 20 + i * 18, 90, 2.5, 1); });
       [260, 600].forEach(x => { c.fillStyle = '#6b4420'; c.fillRect(x - 22, 82, 44, 8); c.fillRect(x - 16, 90, 32, 4); c.fillStyle = '#f6f3ea'; c.fillRect(x - 3, 52, 4, 30); c.fillRect(x - 16, 56, 12, 20); c.fillRect(x + 2, 60, 14, 18); c.fillStyle = '#d8432f'; c.fillRect(x - 1, 46, 8, 5); });
+    } else if (b === 'space') { // planètes et comète au-dessus de l'horizon
+      const disc = (x, y, r, col, hi) => { c.fillStyle = col; c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); if (hi) { c.fillStyle = hi; c.beginPath(); c.arc(x - r * .3, y - r * .3, r * .45, 0, 7); c.fill(); } };
+      c.strokeStyle = '#f1e2a8'; c.lineWidth = 3; c.beginPath(); c.ellipse(150, 40, 34, 8, -.3, 0, 7); c.stroke(); disc(150, 40, 18, '#e3c77a', '#f1dfa6'); c.strokeStyle = '#f1e2a8'; c.beginPath(); c.ellipse(150, 40, 34, 8, -.3, .2, 2.9); c.stroke();
+      disc(420, 30, 13, '#3f8fd6', '#7fc0f0'); c.fillStyle = '#3fa34d'; c.fillRect(414, 26, 8, 6); c.fillRect(424, 34, 5, 4); disc(442, 22, 4, '#c9cfe0');
+      disc(610, 52, 9, '#cf5a3a', '#e88a6a');
+      const gr = c.createLinearGradient(250, 20, 330, 60); gr.addColorStop(0, 'rgba(159,232,255,0)'); gr.addColorStop(1, 'rgba(159,232,255,.9)'); c.strokeStyle = gr; c.lineWidth = 6; c.lineCap = 'round'; c.beginPath(); c.moveTo(250, 20); c.lineTo(326, 58); c.stroke(); disc(330, 60, 5, '#ffffff');
     } else if (b === 'city') {
       for (let x = 0; x < 720; x += 46 + Math.floor(rnd() * 20)) { const bh = 40 + rnd() * 70, bw = 36 + rnd() * 16; c.fillStyle = pick(['#7a8698', '#5f6b7d', '#8e9aac', '#6d5f8a', '#4f7d96']); c.fillRect(x, 120 - bh, bw, bh); c.fillStyle = 'rgba(255,240,170,.85)'; for (let wy = 120 - bh + 6; wy < 112; wy += 10) for (let wx = x + 5; wx < x + bw - 6; wx += 9) if (rnd() > .35) c.fillRect(wx, wy, 5, 5); }
     } else {
@@ -1650,7 +1697,7 @@ function makeScene() {
     sc.state = 'walk';
   };
   sc.monster = () => {
-    const pool = MONSTERS.filter(q => !q.b || q.b === sc.biome).filter(q => sc.biome !== 'ocean' || q.b === 'ocean'); const m = pick(pool.length ? pool : MONSTERS);
+    const own = MONSTERS.filter(q => q.b === sc.biome), pool = own.length ? own : MONSTERS.filter(q => !q.b); const m = pick(pool.length ? pool : MONSTERS); // un décor qui a ses monstres n'utilise que ceux-là (mer, espace)
     sc.ob = null; sc.mon = { m, img: gridCanvas(m.grid, 5, null), wx: sc.off + W() + 60, hp: 3, flinch: 0, state: 'enter', dead: 0 };
     sc.state = 'walk'; sc.prompt = ''; sfx('monster');
     return m.name;
@@ -1722,6 +1769,7 @@ function makeScene() {
     // ciel
     const g = c.createLinearGradient(0, 0, 0, h); g.addColorStop(0, L.sky[0]); g.addColorStop(1, L.sky[1]); c.fillStyle = g; c.fillRect(0, 0, w, h);
     if (S.theme === 'aurore') { c.fillStyle = 'rgba(8,20,48,.45)'; c.fillRect(0, 0, w, h); }
+    if (sc.biome === 'space') { const rs = seeded(91); for (let i = 0; i < 70; i++) { const x = (rs() * 1400 - sc.off * .04) % w, y = rs() * (gy - 6), s2 = rs() < .2 ? 3 : 2; c.fillStyle = `rgba(255,255,255,${(.45 + .5 * rs()).toFixed(2)})`; c.fillRect(x < 0 ? x + w : x, y, s2, s2); } }
     // collines lointaines (pixels)
     (sc.biome === 'ocean' ? [[L.far2, .15, 14, 0], [L.far, .3, 10, 2]] : [[L.far2, .15, 58, 0], [L.far, .3, 44, 2]]).forEach(([col, k, amp, ph]) => {
       c.fillStyle = col; const o = sc.off * k;
@@ -1782,6 +1830,8 @@ function makeScene() {
     else if (type === 'baril') { c.fillStyle = '#8a5a2b'; c.fillRect(x, gy - 34, 34, 34); c.fillStyle = '#5a3a18'; c.fillRect(x, gy - 28, 34, 4); c.fillRect(x, gy - 10, 34, 4); c.fillStyle = '#b07a3c'; c.fillRect(x + 4, gy - 32, 6, 30); }
     else if (type === 'cone') { c.fillStyle = '#ff7a1a'; c.fillRect(x + 12, gy - 34, 10, 8); c.fillRect(x + 8, gy - 26, 18, 10); c.fillRect(x + 4, gy - 16, 26, 12); c.fillStyle = '#fff'; c.fillRect(x + 9, gy - 22, 16, 4); c.fillStyle = '#333'; c.fillRect(x, gy - 4, 34, 4); }
     else if (type === 'boite') { c.fillStyle = '#c99a5a'; c.fillRect(x, gy - 30, 44, 30); c.fillStyle = '#a87a3a'; c.fillRect(x, gy - 30, 44, 5); c.fillStyle = '#e8c890'; c.fillRect(x + 18, gy - 30, 8, 30); }
+    else if (type === 'cratere') { c.fillStyle = '#4f556a'; c.fillRect(x, gy, 64, 10); c.fillStyle = '#3a4054'; c.fillRect(x + 8, gy + 4, 48, 8); c.fillStyle = '#d0d5e2'; c.fillRect(x - 6, gy - 6, 12, 6); c.fillRect(x + 58, gy - 6, 12, 6); c.fillRect(x + 4, gy - 3, 56, 3); }
+    else if (type === 'caillou') { c.fillStyle = '#5a6074'; c.fillRect(x + 6, gy - 28, 36, 28); c.fillRect(x, gy - 16, 50, 16); c.fillStyle = '#8a90a6'; c.fillRect(x + 12, gy - 24, 12, 6); c.fillStyle = '#ffb347'; c.fillRect(x + 30, gy - 12, 8, 6); c.fillStyle = '#3a4054'; c.fillRect(x + 20, gy - 10, 6, 6); }
     else if (type === 'eau') { c.fillStyle = '#3c8fd0'; c.fillRect(x, gy, 80, 16); c.fillStyle = '#9fd4ff'; for (let i = 0; i < 4; i++) c.fillRect(x + 6 + i * 18 + Math.sin(sc.t * 3 + i) * 3, gy + 4, 10, 3); c.fillStyle = '#5a4026'; c.fillRect(x - 4, gy, 4, 16); c.fillRect(x + 80, gy, 4, 16); }
   }
   function drawBat(c, x, y, ang) {
@@ -1803,11 +1853,11 @@ function makeScene() {
 function norm(s) { return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’'`\-]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim(); }
 const stripArt = s => s.replace(/^(le|la|les|l|un|une|des|du|de|d|faire de la|faire du|faire la) /, '');
 function lev(a, b) { const m = a.length, n = b.length; if (!m) return n; if (!n) return m; let p = Array.from({ length: n + 1 }, (_, j) => j); for (let i = 1; i <= m; i++) { const c = [i]; for (let j = 1; j <= n; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; } return p[n]; }
-function matchAns(v, answers, numeric) {
+function matchAns(v, answers, numeric, strict) { // strict : presque aucune faute tolérée (pour des mots qui se ressemblent, comme météore et météorite)
   if (numeric) { const d = String(v).replace(/\D/g, ''); return { ok: answers.some(a => a.replace(/\D/g, '') === d && d !== '') }; }
   const x = stripArt(norm(v)); if (!x) return { ok: false };
   for (const a of answers) { if (x === stripArt(norm(a))) { const exact = v.trim().toLowerCase() === a.toLowerCase(); return { ok: true, near: !exact, right: answers[0] }; } }
-  for (const a of answers) { const y = stripArt(norm(a)); const tol = y.length >= 8 ? 2 : y.length >= 5 ? 1 : 0; if (tol && lev(x, y) <= tol) return { ok: true, near: true, right: answers[0] }; }
+  for (const a of answers) { const y = stripArt(norm(a)); const tol = strict ? (y.length >= 9 ? 1 : 0) : (y.length >= 8 ? 2 : y.length >= 5 ? 1 : 0); if (tol && lev(x, y) <= tol) return { ok: true, near: true, right: answers[0] }; }
   return { ok: false, right: answers[0] };
 }
 
@@ -2011,10 +2061,13 @@ GAMES.fill = (stage, s, api) => {
   $('#hint', bar).onclick = () => { hinted = true; blanks.forEach(b => { if (!b.inp.value) { const a = b.part.hint || b.part.a[0]; b.inp.placeholder = b.part.num ? a.charAt(0) + '…' : a.split(' ').filter(w => w.length > 2).slice(0, 3).map(w => w.charAt(0) + '…').join(' '); } }); sfx('tap'); $('#hint', bar).disabled = true; };
   const check = () => {
     if (done) return; done = true; const by = {}; const fixes = [];
+    // cases d'un même groupe (g) : une liste dont l'ordre est libre (« de glace, de roches, de gaz… ») ; chaque mot attendu sert une seule fois
+    const groups = {}; blanks.forEach(b => { if (b.part.g) (groups[b.part.g] = groups[b.part.g] || []).push(b); });
+    Object.values(groups).forEach(bs => { const free = bs.map(b => b.part.a); bs.forEach(b => { const i = free.findIndex(a => a && matchAns(b.inp.value, a, false, b.part.strict).ok); if (i >= 0) { b.exp = free[i]; free[i] = null; } }); bs.forEach(b => { if (!b.exp) { const i = free.findIndex(a => a); b.exp = free[i]; free[i] = null; } }); });
     blanks.forEach(b => {
-      const m = matchAns(b.inp.value, b.part.a, b.part.num); b.inp.disabled = true;
+      const exp = b.exp || b.part.a, m = matchAns(b.inp.value, exp, b.part.num, b.part.strict); b.inp.disabled = true;
       b.inp.classList.add(m.ok ? 'ok' : 'ko');
-      if (!m.ok) { fixes.push(`<b>${esc(b.part.a[0])}</b>${b.part.unit ? ' ' + b.part.unit : ''}`); b.inp.value = b.part.a[0]; }
+      if (!m.ok) { fixes.push(`<b>${esc(exp[0])}</b>${b.part.unit ? ' ' + b.part.unit : ''}`); b.inp.value = exp[0]; }
       else if (m.near) { fixes.push(`On écrit : <b>${esc(m.right)}</b>`); b.inp.value = m.right; }
       const id = b.part.id || s.item; by[id] = (by[id] === undefined ? true : by[id]) && m.ok && !hinted;
     });
@@ -2163,7 +2216,10 @@ GAMES.swipe = (stage, s, api) => {
   const queue = s.cards.slice(); const res = []; let card = null, cur = null, lock = false;
   const next = () => {
     deck.innerHTML = ''; cur = queue.shift(); lock = false;
-    if (!cur) { api.result(res, { explain: `${res.filter(r => r.ok).length} sur ${res.length}. ` + (s.tip || 'Truc : si l’activité a besoin du <b>bois</b> ou de la <b>place</b> occupée par la forêt, on coupe. Si elle a besoin que la forêt <b>reste vivante</b>, on préserve.') }); return; }
+    if (!cur) { // plusieurs cartes peuvent noter le même élément : il est réussi si toutes ses cartes le sont
+      const by = {}; res.forEach(r => { by[r.id] = (by[r.id] === undefined ? true : by[r.id]) && r.ok; });
+      const out = s.item ? [{ id: s.item, ok: res.every(r => r.ok) }] : Object.keys(by).map(id => ({ id, ok: by[id] }));
+      api.result(out, { explain: `${res.filter(r => r.ok).length} sur ${res.length}. ` + (s.tip || 'Truc : si l’activité a besoin du <b>bois</b> ou de la <b>place</b> occupée par la forêt, on coupe. Si elle a besoin que la forêt <b>reste vivante</b>, on préserve.') }); return; }
     card = el(`<div class="panel swcard pop"><span class="tag l" style="color:${LF.color};border-color:${LF.color}">${esc(LF.label.toUpperCase())}</span><span class="tag r" style="color:${RT.color};border-color:${RT.color}">${esc(RT.label.toUpperCase())}</span>${icon(s.cardIcon || 'leaf', 48)}<div>${esc(cur.text)}</div><span class="muted" style="font-size:15px">${queue.length + 1} restante${queue.length ? 's' : ''}</span></div>`);
     deck.appendChild(card); drag(card);
   };
@@ -3047,7 +3103,7 @@ const lvId = (id, L) => L === 1 ? id : (LV2[id] || id.replace('eu-', 'e2-')).rep
 /* ---------- Quiz éclair : une série de questions rapides dans une seule étape ---------- */
 function quizSteps(key, focus, C) {
   const L = C.level, items = C.items.filter(i => i.quest === key && (!focus || focus.has(i.id)));
-  const byId = {}; QBANK().forEach(e => { if (e.map) return; const id = lvId(e.id, L); (byId[id] = byId[id] || []).push(e); });
+  const lv = C.lv || lvId, byId = {}; (C.bank || QBANK)().forEach(e => { if (e.map) return; const id = lv(e.id, L); (byId[id] = byId[id] || []).push(e); }); // chaque matière a sa banque de questions
   const pool = items.filter(i => byId[i.id]); if (pool.length < 2) return null;
   const mkQ = id => { const e = pick(byId[id]); return { id, Q: (L > 1 && e.c ? e.c : e.m)() }; };
   const mk = ids => ({ type: 'quiz', quest: key, qnum: 'Quiz', time: L === 3 ? 25 : 0, qs: ids.map(mkQ), subset: f => mk(ids.filter(x => f.includes(x))) });
@@ -3091,7 +3147,7 @@ GAMES.quiz = (stage, s, api) => {
       $$('.opt', qa).forEach(b => b.onclick = () => { if (done) return; const ok = Q.options[+b.dataset.i] === Q.correct; b.classList.add(ok ? 'good' : 'bad'); if (!ok) { b.classList.add('shake'); const gd = $$('.opt', qa).find(x => x.textContent === Q.correct); if (gd) gd.classList.add('good'); } end(ok); });
     } else {
       qa.innerHTML = `<div class="row"><input class="txt" id="qin" style="flex:1;min-width:190px" placeholder="${esc(Q.ph || 'Ta réponse')}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ${Q.num ? 'inputmode="numeric"' : ''} enterkeyhint="done"><button class="btn" id="qok">Valider</button></div>`;
-      const inp = $('#qin', qa), sub = () => { if (done) return; if (!inp.value.trim()) { inp.focus(); return; } const m = matchAns(inp.value, Q.a, Q.num); inp.disabled = true; inp.classList.add(m.ok ? 'ok' : 'ko'); end(m.ok); };
+      const inp = $('#qin', qa), sub = () => { if (done) return; if (!inp.value.trim()) { inp.focus(); return; } const m = matchAns(inp.value, Q.a, Q.num, Q.strict); inp.disabled = true; inp.classList.add(m.ok ? 'ok' : 'ko'); end(m.ok); };
       $('#qok', qa).onclick = sub; inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); sub(); } });
     }
     if (T) {
@@ -3337,10 +3393,546 @@ const FICHES = {
   }
 };
 function fillFiche(root, key) {
-  const fk = ficheKey(key), f = FICHES[fk], q = QUESTS_EU.find(x => x.key === fk);
-  root.innerHTML = `<div class="fhead">${icon(q.icon, 56)}<div class="grow"><h2>${q.title}</h2><p class="muted">${q.q} du document d’étude · cahier ${q.pages}</p></div></div>` + f.html();
+  const fk = ficheKey(key), f = FICHES[fk], q = ALL_QUESTS.find(x => x.key === fk);
+  root.innerHTML = `<div class="fhead">${icon(q.icon, 56)}<div class="grow"><h2>${q.title}</h2><p class="muted">${q.ref || `${q.q} du document d’étude · cahier ${q.pages}`}</p></div></div>` + f.html();
   if (f.after) f.after(root);
 }
+
+/* =========================================================
+   SCIENCE — L'ASTRONOMIE (notes de cours de l'enseignant, 2 pages)
+   Règle : les définitions sont celles des notes, MOT POUR MOT
+   (champ « def » et « plus »). Tout le reste (champ « mots »,
+   questions, trucs) est une aide de l'appli, présentée à part,
+   jamais à la place de la définition.
+   Trois niveaux : je reconnais (as-), j'écris (a2-), de mémoire (a3-).
+   ========================================================= */
+const AS = {
+  systeme: { term: 'Système solaire', page: 1, def: 'Système composé d’une étoile, le Soleil, et de corps célestes qui gravitent autour de cette étoile.',
+    plus: 'À ce jour, ces corps sont :<br>• huit planètes et leurs satellites ; Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune.<br>• cinq planètes naines et leurs satellites ;<br>• des astéroïdes et des comètes.',
+    mots: 'Le Soleil est l’étoile, et tout le reste tourne autour de lui : les planètes, leurs satellites, les planètes naines, les astéroïdes et les comètes.', syn: ['Système solaire', 'le système solaire'], ask: '… composé d’une étoile, le Soleil, et de corps célestes qui gravitent autour de cette étoile.' },
+  satellite: { term: 'Satellite', page: 1, def: 'Corps céleste en orbite autour d’une planète.', plus: 'Ex : La lune est le satellite naturel de la Terre.',
+    mots: 'Un satellite tourne autour d’une planète, pas directement autour du Soleil. La Lune tourne autour de la Terre : c’est son satellite naturel.', syn: ['Satellite', 'un satellite', 'satellites', 'satellite naturel'] },
+  orbite: { term: 'Orbite', page: 1, def: 'Trajectoire courbe décrite par une planète autour du Soleil, ou par un satellite autour de sa planète.',
+    mots: 'L’orbite, c’est le chemin courbe qu’un corps suit en tournant autour d’un autre. La Terre a son orbite autour du Soleil ; la Lune a la sienne autour de la Terre.', syn: ['Orbite', 'une orbite', 'orbites'] },
+  soleil: { term: 'Le Soleil', page: 1, def: 'Le Soleil est une étoile autour de laquelle gravitent les huit planètes du système solaire.',
+    mots: 'Le Soleil n’est pas une planète : c’est une étoile. C’est autour de lui que tournent les huit planètes.', syn: ['Soleil', 'le Soleil'], ask: '… est une étoile autour de laquelle gravitent les huit planètes du système solaire.' },
+  planete: { term: 'Planète', page: 1, def: 'Corps céleste de forme sphérique, de grande dimension, solide ou gazeux, en orbite autour du Soleil.',
+    mots: 'Une planète, c’est une grosse boule, solide ou faite de gaz, qui tourne autour du Soleil. Trois indices : forme sphérique, grande dimension, en orbite autour du Soleil.', syn: ['Planète', 'une planète', 'planètes'] },
+  tellurique: { term: 'Planète tellurique', page: 1, def: 'Planète essentiellement composée de roches et de métaux et possédant une surface solide.', plus: 'Mercure, Vénus, Terre et Mars.',
+    mots: 'Une planète tellurique est une planète rocheuse, avec un sol solide. Ce sont les quatre premières de ta liste : Mercure, Vénus, Terre et Mars. Truc : « tellurique » vient d’un mot qui veut dire « terre ».', syn: ['Planète tellurique', 'tellurique', 'une planète tellurique', 'planètes telluriques', 'telluriques'] },
+  gazeuse: { term: 'Planète gazeuse ou jovienne', page: 1, def: 'Planète volumineuse et peu dense composée essentiellement d’éléments gazeux.',
+    plus: 'Elle possède souvent plusieurs satellites. Dans notre système solaire, ces planètes possèdent des anneaux planétaires. Jupiter, Saturne, Uranus et Neptune.',
+    mots: 'Une planète gazeuse est très grosse, mais faite surtout de gaz : elle est peu dense. Ce sont les quatre dernières de ta liste : Jupiter, Saturne, Uranus et Neptune. Truc : « jovienne » vient de Jupiter.', syn: ['Planète gazeuse', 'gazeuse', 'planète jovienne', 'jovienne', 'planète gazeuse ou jovienne', 'une planète gazeuse', 'planètes gazeuses', 'gazeuses', 'joviennes'] },
+  gravite: { term: 'Force gravitationnelle', page: 1, def: 'Force d’attraction s’exerçant entre deux corps sous l’effet de leur masse et de la distance les séparant.',
+    plus: 'Dans l’Univers, l’intensité de la force gravitationnelle est variable. Elle dépend de deux facteurs importants : 1. la masse des corps ; 2. la distance entre eux.',
+    mots: 'Deux corps s’attirent toujours l’un l’autre. La force de cette attraction change selon deux choses : la masse des corps et la distance entre eux.', syn: ['Force gravitationnelle', 'la force gravitationnelle', 'gravitationnelle', 'force de gravitation', 'gravitation', 'force de gravité', 'gravité'] },
+  comete: { term: 'Comète', page: 1, def: 'Petit corps constitué de glace, de roches, de gaz et de poussières se déplaçant sur de très grandes distances dans le système solaire.',
+    plus: 'La queue de la comète apparait lorsqu’elle passe près du soleil. Noyau, chevelure, queue ionique.',
+    mots: 'Une comète est un petit corps de glace, de roches, de gaz et de poussières qui voyage très loin dans le système solaire. Sa queue n’est pas toujours là : elle apparaît quand la comète passe près du Soleil.', syn: ['Comète', 'une comète', 'comètes'] },
+  asteroide: { term: 'Astéroïde', page: 2, def: 'Corps céleste composé de roches, de métaux ou de glace.',
+    plus: 'Sa taille peut varier de quelques mètres à plusieurs kilomètres. Il gravite autour du Soleil, généralement dans la ceinture d’astéroïdes.',
+    mots: 'Un astéroïde est un morceau de roche, de métal ou de glace qui tourne autour du Soleil, le plus souvent dans la ceinture d’astéroïdes. Il peut mesurer quelques mètres ou plusieurs kilomètres.', syn: ['Astéroïde', 'un astéroïde', 'astéroïdes'] },
+  meteore: { term: 'Météore', page: 2, def: 'Traînée lumineuse, aussi appelée étoile filante, laissée par un astéroïde qui pénètre dans l’atmosphère terrestre et se désintègre.',
+    mots: 'Le météore, ce n’est pas la roche : c’est la lumière. Quand un astéroïde entre dans l’atmosphère de la Terre et se désintègre, il laisse une traînée lumineuse : l’étoile filante.', syn: ['Météore', 'un météore', 'météores', 'étoile filante'] },
+  meteorite: { term: 'Météorite', page: 2, def: 'Partie de l’astéroïde (roche), lorsqu’il ne s’est pas complètement désintégré à son entrée dans l’atmosphère, qui parvient à la surface de la Terre.',
+    mots: 'La météorite, c’est le morceau de roche qui reste. L’astéroïde ne s’est pas désintégré au complet dans l’atmosphère, et une partie arrive jusqu’à la surface de la Terre.', syn: ['Météorite', 'une météorite', 'météorites'], strict: true },
+  astrobleme: { term: 'Astroblème', page: 2, def: 'Le cratère formé par un tel impact est nommé astroblème.',
+    mots: 'Quand une météorite frappe la surface de la Terre, l’impact forme un cratère. Ce cratère porte un nom : astroblème.', syn: ['Astroblème', 'un astroblème', 'astroblèmes'] },
+  vent: { term: 'Vent solaire', page: 2, def: 'Flux de particules émises par le soleil en direction de l’espace.', plus: 'Le champ magnétique terrestre nous protège de ces vents dangereux.',
+    mots: 'Le Soleil envoie des particules dans l’espace : c’est le vent solaire. Ce vent est dangereux, mais le champ magnétique de la Terre nous en protège, comme un bouclier.', syn: ['Vent solaire', 'le vent solaire', 'vents solaires'] },
+  aurore: { term: 'Aurore polaire', page: 2, def: 'Phénomène atmosphérique lumineux causé par l’interaction des particules du vent solaire et des gaz de la haute atmosphère (thermosphère) terrestre.',
+    plus: 'Dans l’hémisphère Nord, une aurore polaire est appelée aurore boréale, et dans l’hémisphère Sud, aurore australe.',
+    mots: 'Quand les particules du vent solaire rencontrent les gaz de la haute atmosphère de la Terre (la thermosphère), ça produit de la lumière dans le ciel. Truc : boréale = Nord, comme la forêt boréale ; australe = Sud, comme l’Australie.', syn: ['Aurore polaire', 'une aurore polaire', 'aurores polaires', 'aurore'] },
+  galaxie: { term: 'Galaxie', page: 2, def: 'Une galaxie est un assemblage d’étoiles, de gaz, de poussières et de vide, dans un disque en rotation.',
+    mots: 'Une galaxie, c’est un immense regroupement d’étoiles, avec du gaz, des poussières et du vide, qui tourne comme un disque.', syn: ['Galaxie', 'une galaxie', 'galaxies'], ask: '… est un assemblage d’étoiles, de gaz, de poussières et de vide, dans un disque en rotation.' },
+  univers: { term: 'Univers', page: 2, def: 'L’Univers, au sens cosmologique, est l’ensemble de tout ce qui existe, régi par un certain nombre de lois.',
+    mots: 'L’Univers, c’est tout ce qui existe : rien n’est plus grand. Et tout y obéit à des lois.', syn: ['Univers', 'l’Univers'], ask: '…, au sens cosmologique, est l’ensemble de tout ce qui existe, régi par un certain nombre de lois.' }
+};
+const AS_PLANETS = [
+  { k: 'mercure', name: 'Mercure', t: 'tell', syn: ['mercure'] }, { k: 'venus', name: 'Vénus', t: 'tell', syn: ['venus'] }, { k: 'terre', name: 'Terre', t: 'tell', syn: ['terre', 'la terre'] }, { k: 'mars', name: 'Mars', t: 'tell', syn: ['mars'] },
+  { k: 'jupiter', name: 'Jupiter', t: 'gaz', syn: ['jupiter'] }, { k: 'saturne', name: 'Saturne', t: 'gaz', syn: ['saturne'] }, { k: 'uranus', name: 'Uranus', t: 'gaz', syn: ['uranus'] }, { k: 'neptune', name: 'Neptune', t: 'gaz', syn: ['neptune'] }
+];
+const AS_TELL = AS_PLANETS.filter(p => p.t === 'tell'), AS_GAZ = AS_PLANETS.filter(p => p.t === 'gaz');
+const asAsk = k => AS[k].ask || AS[k].def; // la définition telle qu'on la pose en question (sans le mot à trouver)
+const AS_LIST8 = 'Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune';
+// Ce que l'appli affiche après une réponse : d'abord les mots des notes, ensuite l'explication dans d'autres mots
+const asNote = (k, plus) => `<span class="tn">Tes notes</span> « ${AS[k].def} »${plus && AS[k].plus ? ' ' + AS[k].plus : ''}`;
+const asX = (k, plus, extra) => `${asNote(k, plus)}<br><span class="dm">Dans d’autres mots :</span> ${extra || AS[k].mots}`;
+const AS_GRAV_X = 'Tes notes disent que la force dépend de la masse des corps et de la distance entre eux. Pour comprendre : plus les corps sont massifs, plus ils s’attirent ; plus ils sont loin l’un de l’autre, moins ils s’attirent.';
+
+MONSTERS.push(
+  { name: 'Astéroïde grognon', b: 'space', grid: [
+    '...QQQQQ....',
+    '..QQSQQQQQ..',
+    '.QQQQQQSQQQ.',
+    'QQKKQQQKKQQQ',
+    'QQWKQQQWKQQQ',
+    'QSQQQQQQQQSQ',
+    'QQQKKKKKQQQQ',
+    '.QQQQQQQQSQ.',
+    '..QQSQQQQQ..',
+    '...QQQQQ....'] },
+  { name: 'Ovni farceur', b: 'space', grid: [
+    '....IIII....',
+    '...IKIIKI...',
+    '..IIIIIIII..',
+    '.QQQQQQQQQQ.',
+    'QYQQYQQYQQYQ',
+    '.QQQQQQQQQQ.',
+    '...S....S...',
+    '..S......S..'] },
+  { name: 'Satellite détraqué', b: 'space', grid: [
+    'AAA......AAA',
+    'AIA.QQQQ.AIA',
+    'AAAQQQQQQAAA',
+    'AIAQWKKWQAIA',
+    'AAAQQQQQQAAA',
+    'AIA.QRRQ.AIA',
+    'AAA.QQQQ.AAA',
+    '.....YY.....'] }
+);
+ICONS.soleil = ['...Y...', '.Y.Y.Y.', '..YYY..', 'YYYOYYY', '..YYY..', '.Y.Y.Y.', '...Y...'];
+ICONS.saturne = ['.......', '..YYY..', '.YYYYY.', 'LLDDDLL', '.YYYYY.', '..YYY..', '.......'];
+ICONS.comete = ['.....SS', '....SA.', '...SA..', '.AAI...', 'AIWWA..', 'AIWWA..', '.AAA...'];
+ICONS.aurore = ['.E...V.', 'EE..VV.', 'E.EV.VE', '.EEVVE.', '..E..E.', 'KKKKKKK', 'KKKKKKK'];
+ICONS.galaxie = ['..VVV..', '.V...V.', 'V.IWI.V', 'V.WWW..', '.VIWI.V', '..VVVV.', '.......'];
+ICONS.terrelune = ['......Q', '..AAA..', '.AGGAA.', 'AGGGAAA', 'AAGAAGA', '.AAAGA.', '..AAA..'];
+ICONS.fusee = ['...W...', '..WWW..', '..WAW..', '..WWW..', '.RWWWR.', '.R.O.R.', '...Y...'];
+
+const QUESTS_AS = [
+  { key: 'as-systeme', a3d: 'systeme', n: 1, title: 'Le système solaire', sub: 'Le Soleil, les planètes, les satellites et les orbites', q: 'Notes de cours, page 1', ref: 'Notes de cours, page 1', biome: 'stars', icon: 'soleil' },
+  { key: 'as-planetes', a3d: 'tellurique', n: 2, title: 'Telluriques ou gazeuses', sub: 'Les deux familles de planètes', q: 'Notes de cours, page 1', ref: 'Notes de cours, page 1', biome: 'stars', icon: 'saturne' },
+  { key: 'as-gravite', a3d: 'gravite', n: 3, title: 'La force gravitationnelle', sub: 'Ce qui attire les corps l’un vers l’autre', q: 'Notes de cours, page 1', ref: 'Notes de cours, page 1', biome: 'stars', icon: 'terrelune' },
+  { key: 'as-petits', a3d: 'comete', n: 4, title: 'Comètes, astéroïdes et étoiles filantes', sub: 'Comète, astéroïde, météore, météorite, astroblème', q: 'Notes de cours, pages 1 et 2', ref: 'Notes de cours, pages 1 et 2', biome: 'stars', icon: 'comete' },
+  { key: 'as-aurores', a3d: 'aurore', n: 5, title: 'Le vent solaire et les aurores', sub: 'Vent solaire, champ magnétique, aurore boréale et australe', q: 'Notes de cours, page 2', ref: 'Notes de cours, page 2', biome: 'stars', icon: 'aurore' },
+  { key: 'as-recul', a3d: 'galaxie', n: 6, title: 'La galaxie et l’Univers', sub: 'Prendre du recul : de la planète à l’Univers', q: 'Notes de cours, page 2', ref: 'Notes de cours, page 2', biome: 'stars', icon: 'galaxie' }
+];
+const AS_ITEMS_BASE = [
+  ['as-d-systeme', 'as-systeme', 'Définition : Système solaire'], ['as-compo', 'as-systeme', 'Les corps du système solaire'], ['as-planetes8', 'as-systeme', 'Nommer les huit planètes'],
+  ['as-d-soleil', 'as-systeme', 'Le Soleil est une étoile'], ['as-d-planete', 'as-systeme', 'Définition : Planète'], ['as-d-satellite', 'as-systeme', 'Définition : Satellite'], ['as-d-orbite', 'as-systeme', 'Définition : Orbite'],
+  ['as-d-tellurique', 'as-planetes', 'Définition : Planète tellurique'], ['as-tell-liste', 'as-planetes', 'Les quatre planètes telluriques'], ['as-d-gazeuse', 'as-planetes', 'Définition : Planète gazeuse ou jovienne'],
+  ['as-gaz-liste', 'as-planetes', 'Les quatre planètes gazeuses'], ['as-anneaux', 'as-planetes', 'Anneaux et satellites des planètes gazeuses'], ['as-tri', 'as-planetes', 'Classer les huit planètes'],
+  ['as-d-gravite', 'as-gravite', 'Définition : Force gravitationnelle'], ['as-facteurs', 'as-gravite', 'Les deux facteurs : masse et distance'], ['as-grav-app', 'as-gravite', 'Comprendre : la force augmente ou diminue'],
+  ['as-d-comete', 'as-petits', 'Définition : Comète'], ['as-comete-queue', 'as-petits', 'La queue de la comète'], ['as-comete-parties', 'as-petits', 'Noyau, chevelure, queue ionique'],
+  ['as-d-asteroide', 'as-petits', 'Définition : Astéroïde'], ['as-ceinture', 'as-petits', 'La ceinture d’astéroïdes'], ['as-d-meteore', 'as-petits', 'Définition : Météore'],
+  ['as-d-meteorite', 'as-petits', 'Définition : Météorite'], ['as-astrobleme', 'as-petits', 'Astroblème'], ['as-suite', 'as-petits', 'De l’astéroïde à l’astroblème'],
+  ['as-d-vent', 'as-aurores', 'Définition : Vent solaire'], ['as-champ', 'as-aurores', 'Le champ magnétique terrestre'], ['as-d-aurore', 'as-aurores', 'Définition : Aurore polaire'],
+  ['as-thermo', 'as-aurores', 'La thermosphère'], ['as-boreale', 'as-aurores', 'Aurore boréale'], ['as-australe', 'as-aurores', 'Aurore australe'], ['as-chaine', 'as-aurores', 'Du Soleil à l’aurore'],
+  ['as-d-galaxie', 'as-recul', 'Définition : Galaxie'], ['as-d-univers', 'as-recul', 'Définition : Univers'], ['as-echelle', 'as-recul', 'Du satellite à l’Univers']
+];
+const AS_PRE = ['as-', 'a2-', 'a3-'];
+const asLv = (id, L) => AS_PRE[L - 1] + id.slice(3);
+const asLevelOf = key => Math.max(1, AS_PRE.indexOf(key.slice(0, 3)) + 1);
+const ITEMS_AS = AS_ITEMS_BASE.map(([id, quest, label]) => ({ id, quest, label }));
+const AS_Q2 = { systeme: ['Le système solaire, à écrire', 'Les mots exacts de tes notes, sans choix de réponses'], planetes: ['Telluriques ou gazeuses, à écrire', 'Complète les définitions et nomme les planètes'], gravite: ['La force gravitationnelle, à écrire', 'La définition et les deux facteurs'], petits: ['Comètes, astéroïdes et étoiles filantes, à écrire', 'Cinq définitions à compléter'], aurores: ['Le vent solaire et les aurores, à écrire', 'Complète les définitions'], recul: ['La galaxie et l’Univers, à écrire', 'Complète les définitions'] };
+const AS_Q3 = { systeme: ['Le système solaire, de mémoire', 'Tu rédiges les définitions au complet'], planetes: ['Telluriques ou gazeuses, de mémoire', 'Définitions rédigées, planètes contre la montre'], gravite: ['La force gravitationnelle, de mémoire', 'Définition rédigée et explications'], petits: ['Comètes, astéroïdes et étoiles filantes, de mémoire', 'Tu rédiges et tu expliques les différences'], aurores: ['Le vent solaire et les aurores, de mémoire', 'Tu rédiges et tu expliques'], recul: ['La galaxie et l’Univers, de mémoire', 'Définitions rédigées'] };
+const asQuests = L => QUESTS_AS.map(q => { const s = q.key.slice(3), t = L === 2 ? AS_Q2[s] : AS_Q3[s]; return Object.assign({}, q, { key: AS_PRE[L - 1] + s, fiche: q.key, title: t[0], sub: t[1] }); });
+const QUESTS_AS2 = asQuests(2), QUESTS_AS3 = asQuests(3);
+const asItems = L => ITEMS_AS.map(i => ({ id: asLv(i.id, L), quest: asLv(i.quest, L), label: i.label }));
+const ITEMS_AS2 = asItems(2), ITEMS_AS3 = asItems(3);
+QUESTS_AS.concat(QUESTS_AS2, QUESTS_AS3).forEach(q => { SCENE_BIOME[q.key] = 'space'; });
+
+/* ---------- Banque de questions (quiz éclair) ----------
+   id = élément du niveau 1 ; m = choix de réponses ; c = à écrire.
+   Chaque explication cite d'abord les notes, puis explique dans d'autres mots. */
+function ABANK() {
+  const B = [], add = (id, m, c) => B.push({ id, m, c: c || null, map: false });
+  const mcq = (q, correct, pool, explain, fixed) => ({ kind: 'mcq', q, correct, explain, options: fixed || shuffle([correct].concat(shuffle(pool.filter(w => w !== correct)).slice(0, 3))) });
+  const typ = (q, a, explain, o) => Object.assign({ kind: 'type', q, a, explain }, o || {});
+  const near = { systeme: ['Galaxie', 'Univers', 'Orbite'], satellite: ['Planète', 'Astéroïde', 'Comète'], orbite: ['Satellite', 'Aurore polaire', 'Vent solaire'], planete: ['Satellite', 'Astéroïde', 'Comète'], tellurique: ['Planète gazeuse ou jovienne', 'Astéroïde', 'Satellite'], gazeuse: ['Planète tellurique', 'Comète', 'Galaxie'], gravite: ['Vent solaire', 'Orbite', 'Aurore polaire'], comete: ['Astéroïde', 'Météore', 'Météorite'], asteroide: ['Comète', 'Météore', 'Météorite'], meteore: ['Météorite', 'Astéroïde', 'Comète'], meteorite: ['Météore', 'Astéroïde', 'Astroblème'], vent: ['Aurore polaire', 'Force gravitationnelle', 'Comète'], aurore: ['Vent solaire', 'Météore', 'Galaxie'], galaxie: ['Univers', 'Système solaire', 'Comète'], univers: ['Galaxie', 'Système solaire', 'Orbite'] };
+  // 1) La définition des notes → le mot (pour chaque définition)
+  Object.keys(near).forEach(k => add('as-d-' + k,
+    () => mcq(`Quel mot correspond à cette définition de tes notes ? « ${asAsk(k)} »`, AS[k].term, [], asX(k), shuffle([AS[k].term].concat(near[k]))),
+    () => typ(`Quel mot correspond à cette définition de tes notes ? « ${asAsk(k)} »`, AS[k].syn, asX(k), { ph: 'Le mot défini', strict: !!AS[k].strict })));
+  // 2) Le mot → la définition des notes (reconnaître la bonne définition parmi d'autres vraies définitions)
+  [['satellite', ['orbite', 'planete', 'asteroide']], ['planete', ['satellite', 'asteroide', 'comete']], ['meteore', ['meteorite', 'asteroide', 'comete']], ['meteorite', ['meteore', 'asteroide', 'comete']], ['asteroide', ['comete', 'meteorite', 'planete']], ['comete', ['asteroide', 'meteore', 'tellurique']], ['tellurique', ['gazeuse', 'planete', 'asteroide']], ['gazeuse', ['tellurique', 'planete', 'comete']], ['galaxie', ['univers', 'systeme', 'comete']], ['vent', ['aurore', 'gravite', 'meteore']]]
+    .forEach(([k, others]) => add('as-d-' + k, () => mcq(`Laquelle est la définition de « <b>${AS[k].term}</b> » dans tes notes ?`, asAsk(k), [], asX(k), shuffle([asAsk(k)].concat(others.map(o => asAsk(o)))))));
+  // ---- Thème 1 : le système solaire ----
+  add('as-d-systeme', () => mcq('Autour de quoi gravitent les corps célestes du système solaire ?', 'Autour d’une étoile : le Soleil', ['Autour d’une planète : la Terre', 'Autour d’un satellite : la Lune', 'Autour d’une comète'], asX('systeme')),
+    () => typ('Le système solaire est composé d’une étoile et de corps célestes qui gravitent autour d’elle. Quelle est cette étoile ?', ['le Soleil', 'Soleil'], asX('systeme')));
+  add('as-compo', () => mcq('D’après tes notes, combien de <b>planètes naines</b> compte le système solaire à ce jour ?', 'Cinq', [], asX('systeme', true), ['Trois', 'Cinq', 'Huit', 'Neuf']),
+    () => typ('D’après tes notes, combien de <b>planètes naines</b> compte le système solaire à ce jour ?', ['cinq', '5'], asX('systeme', true), { ph: 'Un nombre' }));
+  add('as-compo', () => mcq('D’après tes notes, combien de <b>planètes</b> compte le système solaire ?', 'Huit', [], asX('systeme', true), ['Cinq', 'Sept', 'Huit', 'Neuf']),
+    () => typ('D’après tes notes, combien de <b>planètes</b> compte le système solaire ?', ['huit', '8'], asX('systeme', true), { ph: 'Un nombre' }));
+  add('as-compo', () => mcq('Lequel de ces corps ne fait <b>pas</b> partie de la liste des corps du système solaire dans tes notes ?', 'Les galaxies', [], asX('systeme', true, 'Le système solaire contient des planètes, des satellites, des planètes naines, des astéroïdes et des comètes. Une galaxie, c’est beaucoup plus grand : un assemblage d’étoiles.'), shuffle(['Les galaxies', 'Les planètes naines', 'Les astéroïdes', 'Les comètes'])));
+  add('as-planetes8', () => { const bad = pick([['La Lune', 'La Lune est un satellite : elle est en orbite autour d’une planète, la Terre.'], ['Le Soleil', 'Le Soleil est une étoile, pas une planète.']]); return mcq('Lequel n’est <b>pas</b> une des huit planètes du système solaire ?', bad[0], [], `<span class="tn">Tes notes</span> Les huit planètes : ${AS_LIST8}.<br><span class="dm">Dans d’autres mots :</span> ${bad[1]}`, shuffle([bad[0]].concat(shuffle(AS_PLANETS).slice(0, 3).map(p => p.name)))); },
+    () => { const p = pick(AS_PLANETS); return typ(`Il manque une planète dans la liste de tes notes : ${AS_PLANETS.filter(x => x !== p).map(x => x.name).join(', ')}. Laquelle ?`, [p.name].concat(p.syn), `<span class="tn">Tes notes</span> Les huit planètes : ${AS_LIST8}.`, { ph: 'Nom de la planète' }); });
+  add('as-d-soleil', () => mcq('Le Soleil est…', 'une étoile', ['une planète', 'un satellite', 'une galaxie'], asX('soleil')), () => typ('Complète la phrase de tes notes : « Le Soleil est une … autour de laquelle gravitent les huit planètes du système solaire. »', ['étoile', 'une étoile'], asX('soleil')));
+  add('as-d-soleil', () => mcq('Vrai ou faux ? « Le Soleil est la plus grosse planète du système solaire. »', 'Faux', [], asX('soleil'), ['Vrai', 'Faux']));
+  add('as-d-planete', () => mcq('Lequel de ces éléments ne fait <b>pas</b> partie de la définition d’une planète dans tes notes ?', 'En orbite autour d’une autre planète', [], asX('planete', false, 'Une planète est en orbite autour du Soleil. Un corps en orbite autour d’une planète, c’est un satellite.'), shuffle(['De forme sphérique', 'De grande dimension', 'En orbite autour du Soleil', 'En orbite autour d’une autre planète'])));
+  add('as-d-satellite', () => mcq('La Lune tourne autour de la Terre. La Lune est donc…', 'un satellite', ['une planète', 'une étoile', 'une comète'], asX('satellite', true)), () => typ('Quel est le satellite naturel de la Terre ?', ['la Lune', 'Lune'], asX('satellite', true)));
+  add('as-d-satellite', () => mcq('Autour de quoi un satellite est-il en orbite ?', 'Autour d’une planète', ['Autour du Soleil', 'Autour d’une galaxie', 'Autour d’une comète'], asX('satellite')));
+  add('as-d-orbite', () => mcq('Qui décrit une orbite, d’après tes notes ?', 'Une planète autour du Soleil, ou un satellite autour de sa planète', ['Seulement les comètes', 'Le Soleil autour de la Terre', 'Une étoile filante dans l’atmosphère'], asX('orbite')),
+    () => typ('Complète la définition de tes notes : « Trajectoire … décrite par une planète autour du Soleil, ou par un satellite autour de sa planète. »', ['courbe'], asX('orbite')));
+  // ---- Thème 2 : telluriques ou gazeuses ----
+  add('as-d-tellurique', () => mcq('De quoi une planète tellurique est-elle essentiellement composée ?', 'De roches et de métaux', ['D’éléments gazeux', 'De glace et de poussières', 'D’étoiles et de vide'], asX('tellurique')),
+    () => typ('Complète la définition de tes notes : « Planète essentiellement composée de roches et de métaux et possédant une surface … »', ['solide'], asX('tellurique')));
+  add('as-d-tellurique', () => mcq('Tu cherches une planète qui possède une surface solide. Quelle famille choisis-tu ?', 'Une planète tellurique', [], asX('tellurique'), ['Une planète tellurique', 'Une planète gazeuse ou jovienne']));
+  add('as-tell-liste', () => { const p = pick(AS_TELL); return mcq('Laquelle de ces planètes est une <b>planète tellurique</b> ?', p.name, AS_GAZ.map(x => x.name), asX('tellurique', true)); },
+    () => { const p = pick(AS_TELL); return typ(`Les quatre planètes telluriques de tes notes : ${AS_TELL.filter(x => x !== p).map(x => x.name).join(', ')} et… ?`, [p.name].concat(p.syn), asX('tellurique', true), { ph: 'Nom de la planète' }); });
+  add('as-d-gazeuse', () => mcq('Quel autre nom tes notes donnent-elles à une planète gazeuse ?', 'Planète jovienne', ['Planète tellurique', 'Planète naine', 'Planète rocheuse'], asX('gazeuse')),
+    () => typ('Quel autre nom tes notes donnent-elles à une planète gazeuse ? Planète…', ['jovienne', 'planète jovienne', 'joviennes'], asX('gazeuse')));
+  add('as-d-gazeuse', () => mcq('Une planète volumineuse et peu dense, composée essentiellement d’éléments gazeux. C’est une planète…', 'gazeuse ou jovienne', [], asX('gazeuse'), ['gazeuse ou jovienne', 'tellurique', 'naine']));
+  add('as-gaz-liste', () => { const p = pick(AS_GAZ); return mcq('Laquelle de ces planètes est une <b>planète gazeuse</b> (jovienne) ?', p.name, AS_TELL.map(x => x.name), asX('gazeuse', true)); },
+    () => { const p = pick(AS_GAZ); return typ(`Les quatre planètes gazeuses de tes notes : ${AS_GAZ.filter(x => x !== p).map(x => x.name).join(', ')} et… ?`, [p.name].concat(p.syn), asX('gazeuse', true), { ph: 'Nom de la planète' }); });
+  add('as-anneaux', () => mcq('Dans notre système solaire, que possèdent les planètes gazeuses ?', 'Des anneaux planétaires', ['Une surface solide', 'Une queue ionique', 'Une chevelure'], asX('gazeuse', true)),
+    () => typ('Complète la phrase de tes notes : « Dans notre système solaire, ces planètes possèdent des … planétaires. »', ['anneaux', 'anneau'], asX('gazeuse', true)));
+  add('as-anneaux', () => mcq('D’après tes notes, que possède souvent une planète gazeuse ?', 'Plusieurs satellites', ['Aucun satellite', 'Une surface solide', 'Une ceinture d’astéroïdes'], asX('gazeuse', true)));
+  AS_PLANETS.forEach(p => add('as-tri', () => mcq(`<b>${p.name}</b> : planète tellurique ou planète gazeuse ?`, p.t === 'tell' ? 'Tellurique' : 'Gazeuse (jovienne)', [], asX(p.t === 'tell' ? 'tellurique' : 'gazeuse', true), ['Tellurique', 'Gazeuse (jovienne)'])));
+  // ---- Thème 3 : la force gravitationnelle ----
+  add('as-d-gravite', () => mcq('Entre quoi la force gravitationnelle s’exerce-t-elle ?', 'Entre deux corps', ['Seulement entre deux étoiles', 'Entre une planète et son atmosphère', 'Seulement sur la Terre'], asX('gravite')),
+    () => typ('Complète la définition de tes notes : « Force d’… s’exerçant entre deux corps sous l’effet de leur masse et de la distance les séparant. »', ['attraction'], asX('gravite')));
+  add('as-facteurs', () => mcq('De quels deux facteurs dépend l’intensité de la force gravitationnelle ?', 'La masse des corps et la distance entre eux', ['La couleur des corps et leur température', 'La vitesse des corps et leur forme', 'La masse des corps et leur couleur'], asX('gravite', true)),
+    () => { const w = pick([['masse', 'la … des corps et la distance entre eux'], ['distance', 'la masse des corps et la … entre eux']]); return typ(`L’intensité de la force gravitationnelle dépend de deux facteurs : ${w[1]}. Quel mot manque ?`, [w[0], 'la ' + w[0]], asX('gravite', true)); });
+  add('as-facteurs', () => mcq('Dans l’Univers, l’intensité de la force gravitationnelle est…', 'variable', ['toujours la même', 'toujours nulle', 'impossible à expliquer'], asX('gravite', true)));
+  add('as-grav-app', () => mcq('Deux corps s’éloignent l’un de l’autre. La force gravitationnelle entre eux…', 'diminue', [], AS_GRAV_X, ['augmente', 'diminue', 'reste la même']));
+  add('as-grav-app', () => mcq('Deux corps se rapprochent l’un de l’autre. La force gravitationnelle entre eux…', 'augmente', [], AS_GRAV_X, ['augmente', 'diminue', 'reste la même']));
+  add('as-grav-app', () => mcq('On remplace un des deux corps par un corps beaucoup plus massif, à la même distance. La force gravitationnelle…', 'augmente', [], AS_GRAV_X, ['augmente', 'diminue', 'reste la même']));
+  add('as-grav-app', () => mcq('Quelle force garde les planètes en orbite autour du Soleil ?', 'La force gravitationnelle', ['Le vent solaire', 'Le champ magnétique terrestre', 'Les anneaux planétaires'], asX('gravite', false, 'Le Soleil et les planètes s’attirent. C’est cette attraction qui fait que les planètes gravitent autour du Soleil au lieu de partir tout droit dans l’espace.')));
+  // ---- Thème 4 : comètes, astéroïdes, étoiles filantes ----
+  add('as-d-comete', () => mcq('De quoi une comète est-elle constituée ?', 'De glace, de roches, de gaz et de poussières', ['De roches et de métaux, avec une surface solide', 'D’éléments gazeux seulement', 'D’étoiles, de gaz, de poussières et de vide'], asX('comete')));
+  add('as-comete-queue', () => mcq('Quand la queue d’une comète apparaît-elle ?', 'Lorsqu’elle passe près du Soleil', ['Lorsqu’elle est très loin du Soleil', 'Lorsqu’elle entre dans l’atmosphère terrestre', 'Elle est toujours visible'], asX('comete', true)),
+    () => typ('Complète la phrase de tes notes : « La queue de la comète apparait lorsqu’elle passe près du … »', ['soleil', 'le soleil'], asX('comete', true)));
+  add('as-comete-queue', () => mcq('Une comète voyage très loin du Soleil. D’après tes notes, a-t-elle une queue à ce moment-là ?', 'Non : la queue apparaît lorsqu’elle passe près du Soleil', [], asX('comete', true), ['Non : la queue apparaît lorsqu’elle passe près du Soleil', 'Oui : la queue ne disparaît jamais']));
+  add('as-comete-parties', () => mcq('Lequel n’est <b>pas</b> une des trois parties de la comète nommées dans tes notes ?', 'L’anneau', [], '<span class="tn">Tes notes</span> « Noyau, chevelure, queue ionique. »<br><span class="dm">Dans d’autres mots :</span> les anneaux, ce sont les planètes gazeuses qui en possèdent, pas les comètes.', shuffle(['L’anneau', 'Le noyau', 'La chevelure', 'La queue ionique'])),
+    () => { const w = pick([['noyau', '…, chevelure, queue ionique'], ['chevelure', 'noyau, …, queue ionique'], ['queue', 'noyau, chevelure, … ionique']]); return typ(`Les trois parties de la comète dans tes notes : ${w[1]}. Quel mot manque ?`, [w[0], 'la ' + w[0], 'le ' + w[0]], '<span class="tn">Tes notes</span> « Noyau, chevelure, queue ionique. »'); });
+  add('as-d-asteroide', () => mcq('De quoi un astéroïde est-il composé ?', 'De roches, de métaux ou de glace', ['D’éléments gazeux', 'D’étoiles et de vide', 'De particules émises par le Soleil'], asX('asteroide')));
+  add('as-d-asteroide', () => mcq('D’après tes notes, quelle peut être la taille d’un astéroïde ?', 'De quelques mètres à plusieurs kilomètres', ['Toujours plus gros qu’une planète', 'Toujours plus petit qu’un grain de sable', 'Exactement la taille de la Lune'], asX('asteroide', true)));
+  add('as-ceinture', () => mcq('Où les astéroïdes gravitent-ils généralement ?', 'Autour du Soleil, dans la ceinture d’astéroïdes', ['Autour de la Terre, dans la thermosphère', 'Autour de la Lune', 'Dans la queue des comètes'], asX('asteroide', true)),
+    () => typ('Complète la phrase de tes notes : « Il gravite autour du Soleil, généralement dans la … d’astéroïdes. »', ['ceinture', 'la ceinture'], asX('asteroide', true)));
+  add('as-d-meteore', () => mcq('Quel autre nom donne-t-on à un météore ?', 'Une étoile filante', ['Une planète naine', 'Une aurore boréale', 'Un astroblème'], asX('meteore')), () => typ('Quel autre nom tes notes donnent-elles au météore ?', ['étoile filante', 'une étoile filante', 'étoiles filantes'], asX('meteore')));
+  add('as-d-meteore', () => mcq('Un météore, c’est…', 'une traînée lumineuse', ['une roche tombée au sol', 'un cratère', 'une planète naine'], asX('meteore')));
+  add('as-d-meteorite', () => mcq('On trouve au sol une roche venue de l’espace : une partie d’astéroïde qui ne s’est pas complètement désintégrée. C’est…', 'une météorite', ['un météore', 'une comète', 'un astroblème'], asX('meteorite')),
+    () => typ('Une partie d’astéroïde ne s’est pas complètement désintégrée et parvient à la surface de la Terre. Comment l’appelle-t-on ?', AS.meteorite.syn, asX('meteorite'), { strict: true }));
+  add('as-d-meteorite', () => mcq('Un astéroïde se désintègre <b>complètement</b> en entrant dans l’atmosphère. Y aura-t-il une météorite ?', 'Non : rien ne parvient à la surface de la Terre', [], asX('meteorite', false, 'Pour avoir une météorite, il faut qu’une partie de l’astéroïde ne se désintègre pas et arrive jusqu’au sol. Ici, on verra seulement un météore, la traînée lumineuse.'), ['Non : rien ne parvient à la surface de la Terre', 'Oui : il y a toujours une météorite']));
+  add('as-astrobleme', () => mcq('Comment nomme-t-on le cratère formé par l’impact d’une météorite ?', 'Un astroblème', ['Un météore', 'Une chevelure', 'Une ceinture'], asX('astrobleme')), () => typ('Comment nomme-t-on le cratère formé par l’impact d’une météorite ?', AS.astrobleme.syn, asX('astrobleme')));
+  add('as-suite', () => mcq('Un astéroïde tombe vers la Terre. Dans quel ordre ces trois choses arrivent-elles ?', 'Météore, puis météorite, puis astroblème', [], 'D’abord la traînée lumineuse dans l’atmosphère (météore). Ensuite, s’il reste un morceau, il parvient à la surface (météorite). Enfin, l’impact forme un cratère (astroblème).', shuffle(['Météore, puis météorite, puis astroblème', 'Météorite, puis météore, puis astroblème', 'Astroblème, puis météore, puis météorite'])));
+  add('as-suite', () => mcq('Lequel se passe <b>dans l’atmosphère</b>, avant de toucher le sol ?', 'Le météore', [], asX('meteore'), shuffle(['Le météore', 'L’astroblème', 'La météorite au sol'])));
+  // ---- Thème 5 : le vent solaire et les aurores ----
+  add('as-d-vent', () => mcq('D’où viennent les particules du vent solaire ?', 'Du Soleil', ['De la Lune', 'De la ceinture d’astéroïdes', 'De la thermosphère'], asX('vent')), () => typ('Complète la définition de tes notes : « Flux de … émises par le soleil en direction de l’espace. »', ['particules', 'particule'], asX('vent')));
+  add('as-champ', () => mcq('Qu’est-ce qui nous protège du vent solaire ?', 'Le champ magnétique terrestre', ['La Lune', 'La ceinture d’astéroïdes', 'Les anneaux planétaires'], asX('vent', true)), () => typ('Complète la phrase de tes notes : « Le … terrestre nous protège de ces vents dangereux. »', ['champ magnétique', 'le champ magnétique'], asX('vent', true)));
+  add('as-d-aurore', () => mcq('Qu’est-ce qui cause une aurore polaire ?', 'L’interaction des particules du vent solaire et des gaz de la haute atmosphère', ['L’impact d’une météorite sur la Terre', 'Le passage d’une comète près du Soleil', 'La rotation d’une galaxie'], asX('aurore')));
+  add('as-d-aurore', () => mcq('Imagine que le Soleil n’émet plus de vent solaire. Y aurait-il encore des aurores polaires ?', 'Non : sans particules du vent solaire, pas d’aurore', [], asX('aurore', false, 'Une aurore a besoin de deux choses qui se rencontrent : les particules du vent solaire et les gaz de la haute atmosphère. S’il en manque une, il n’y a pas d’aurore.'), ['Non : sans particules du vent solaire, pas d’aurore', 'Oui : les aurores viennent de la Lune']));
+  add('as-thermo', () => mcq('Quel nom tes notes donnent-elles à la haute atmosphère, là où se forment les aurores ?', 'La thermosphère', ['L’hémisphère', 'La chevelure', 'La ceinture'], asX('aurore')), () => typ('Quel nom tes notes donnent-elles à la haute atmosphère terrestre ?', ['thermosphère', 'la thermosphère'], asX('aurore')));
+  add('as-boreale', () => mcq('Dans l’hémisphère <b>Nord</b>, une aurore polaire est appelée…', 'aurore boréale', [], asX('aurore', true), ['aurore boréale', 'aurore australe']), () => typ('Dans l’hémisphère <b>Nord</b>, une aurore polaire est appelée aurore… ?', ['boréale', 'aurore boréale'], asX('aurore', true)));
+  add('as-boreale', () => mcq('On observe une aurore dans le ciel du nord du Québec. C’est une aurore…', 'boréale', [], asX('aurore', true, 'Le Québec est dans l’hémisphère Nord. Dans l’hémisphère Nord, on dit aurore boréale.'), ['boréale', 'australe']));
+  add('as-australe', () => mcq('Dans l’hémisphère <b>Sud</b>, une aurore polaire est appelée…', 'aurore australe', [], asX('aurore', true), ['aurore boréale', 'aurore australe']), () => typ('Dans l’hémisphère <b>Sud</b>, une aurore polaire est appelée aurore… ?', ['australe', 'aurore australe'], asX('aurore', true)));
+  add('as-australe', () => mcq('On observe une aurore dans le ciel de l’Antarctique, tout au sud de la Terre. C’est une aurore…', 'australe', [], asX('aurore', true, 'L’Antarctique est dans l’hémisphère Sud. Dans l’hémisphère Sud, on dit aurore australe.'), ['boréale', 'australe']));
+  add('as-chaine', () => mcq('Qu’est-ce qui arrive en <b>premier</b> ?', 'Le Soleil émet des particules', [], 'Dans l’ordre : le Soleil émet des particules (le vent solaire), elles voyagent dans l’espace, elles rencontrent les gaz de la haute atmosphère de la Terre, et une aurore polaire apparaît.', shuffle(['Le Soleil émet des particules', 'Les particules rencontrent les gaz de la haute atmosphère', 'Une aurore polaire apparaît dans le ciel'])));
+  add('as-chaine', () => mcq('Quel est le lien entre le vent solaire et l’aurore polaire ?', 'Le vent solaire est une des causes de l’aurore polaire', ['Il n’y a aucun lien', 'L’aurore polaire cause le vent solaire', 'Ce sont deux noms pour la même chose'], asX('aurore')));
+  // ---- Thème 6 : la galaxie et l'Univers ----
+  add('as-d-galaxie', () => mcq('D’après tes notes, quelle est la forme d’une galaxie ?', 'Un disque en rotation', ['Une trajectoire courbe', 'Une traînée lumineuse', 'Une ceinture'], asX('galaxie')), () => typ('Complète la définition de tes notes : « Une galaxie est un assemblage d’étoiles, de gaz, de poussières et de vide, dans un … en rotation. »', ['disque'], asX('galaxie')));
+  add('as-d-univers', () => mcq('D’après tes notes, l’Univers est l’ensemble de…', 'tout ce qui existe', ['toutes les planètes du système solaire', 'toutes les étoiles d’une galaxie', 'tous les satellites'], asX('univers')), () => typ('Complète la définition de tes notes : « L’Univers, au sens cosmologique, est l’ensemble de tout ce qui existe, régi par un certain nombre de … »', ['lois', 'loi'], asX('univers')));
+  add('as-echelle', () => mcq('Lequel contient tous les autres ?', 'L’Univers', [], asX('univers'), shuffle(['L’Univers', 'Une galaxie', 'Le système solaire', 'Une planète'])));
+  add('as-echelle', () => mcq('Lequel est un assemblage d’étoiles ?', 'Une galaxie', [], asX('galaxie'), shuffle(['Une galaxie', 'Le système solaire', 'Une planète', 'Un satellite'])));
+  add('as-echelle', () => mcq('Classe du plus petit ensemble au plus grand.', 'Le système solaire, une galaxie, l’Univers', [], 'Le système solaire a une seule étoile, le Soleil. Une galaxie est un assemblage d’étoiles. L’Univers est l’ensemble de tout ce qui existe.', shuffle(['Le système solaire, une galaxie, l’Univers', 'Une galaxie, le système solaire, l’Univers', 'L’Univers, une galaxie, le système solaire'])));
+  return B;
+}
+
+/* ---------- Mettre dans l'ordre (jeu générique) ---------- */
+GAMES.seq = (stage, s, api) => {
+  stage.appendChild(el(`<div class="panel fadein"><div class="qtitle">${s.title}</div><p class="muted" style="margin-top:4px">${s.sub || 'Touche les cartes dans le bon ordre.'}</p></div>`));
+  const chain = el(`<div class="seqchain">${s.items.map((it, i) => `<div class="seqslot" data-i="${i}"><b>${i + 1}</b><span>?</span></div>`).join('')}</div>`); stage.appendChild(chain);
+  const chips = el('<div class="seqchips"></div>'); stage.appendChild(chips);
+  const tip = el('<div class="fact" style="visibility:hidden">.</div>'); stage.appendChild(tip);
+  let k = 0, miss = 0, done = false;
+  const place = (i) => { const slot = $(`.seqslot[data-i="${i}"]`, chain); slot.classList.add('on', 'pop'); $('span', slot).innerHTML = s.items[i].t; };
+  const finish = (ok) => { if (done) return; done = true; setTimeout(() => api.result([{ id: s.item, ok }], { serious: s.serious, explain: s.explain }), 900); };
+  shuffle(s.items.map((it, i) => i)).forEach(i => {
+    const b = el(`<button class="opt">${s.items[i].t}</button>`);
+    b.onclick = () => {
+      if (done) return;
+      if (i === k) { sfx('tap'); tone(440 + k * 90, 0, .12, 'triangle', .06); burstAt(b, 14); b.style.visibility = 'hidden'; place(k); if (s.items[k].why) { tip.style.visibility = 'visible'; tip.innerHTML = s.items[k].why; } k++; if (k === s.items.length) finish(miss === 0); }
+      else { miss++; b.classList.add('shake', 'bad'); sfx('bad'); buzz(30); setTimeout(() => b.classList.remove('shake', 'bad'), 500); tip.style.visibility = 'visible'; tip.innerHTML = s.hint || 'Pas encore. Cherche ce qui vient juste avant.';
+        if (miss >= (api.exam ? 2 : 4)) { $$('button', chips).forEach(x => x.style.visibility = 'hidden'); for (let j = k; j < s.items.length; j++) place(j); tip.innerHTML = 'Voici le bon ordre.'; finish(false); } }
+    };
+    chips.appendChild(b);
+  });
+};
+
+/* ---------- Constructeurs d'étapes ---------- */
+const AS_TN = n => 'Thème ' + n;
+function asMatch(quest, qn, keys, P, exam) { // relier chaque définition des notes au bon mot
+  const mk = l => ({ type: 'match', quest, qnum: qn, title: 'Relie chaque définition de tes notes au bon mot.', sub: 'Touche une définition, puis touche le mot.', rows: shuffle(l).map(k => ({ id: P + 'd-' + k, text: asAsk(k), to: k, why: `<b>${AS[k].term}.</b> <span class="dm">Dans d’autres mots :</span> ${AS[k].mots}` })), targets: shuffle(keys).map(k => ({ key: k, label: AS[k].term })), hint: 'Pas ce mot-là. Relis la définition : un mot important te met sur la piste.', subset: exam ? null : f => { const r = l.filter(k => f.includes(P + 'd-' + k)); return r.length ? mk(r) : null; } });
+  return mk(keys);
+}
+function asCircle(quest, qn, id, title, parts, explain, exam) { const mk = () => ({ type: 'circle', quest, qnum: qn, item: id, title, parts, explain, subset: exam ? null : () => mk() }); return mk(); }
+function asMcq(quest, qn, id, bank, exam) { // une question de la banque, tirée au hasard pour cet élément
+  const mk = () => { const list = bank.filter(e => e.id === 'as-' + id.slice(3)), Q = pick(list).m(); const st = mcqStep({ quest, qnum: qn, item: id, q: Q.q, correct: Q.correct, options: Q.options, explain: Q.explain }); st.subset = exam ? null : () => mk(); return st; };
+  return mk();
+}
+function asRecall(quest, qn, id, cfg, exam) { const mk = () => ({ type: 'recall', quest, qnum: qn, item: id, cfg, subset: exam ? null : () => mk() }); return mk(); }
+function asSeq(quest, qn, id, o, exam) { const mk = () => Object.assign({ type: 'seq', quest, qnum: qn, item: id }, o, { subset: exam ? null : () => mk() }); return mk(); }
+const AS_SEQ = {
+  suite: { title: 'L’histoire d’une étoile filante : mets les étapes dans l’ordre.', sub: 'Touche les cartes dans l’ordre où les choses arrivent.', hint: 'Pas encore. Pense au trajet : l’espace, puis l’atmosphère, puis le sol.',
+    items: [{ t: 'Un <b>astéroïde</b> gravite autour du Soleil', why: 'Au départ, l’astéroïde est dans l’espace : il gravite autour du Soleil.' }, { t: 'Il pénètre dans l’atmosphère : on voit un <b>météore</b>', why: 'Le météore, c’est la traînée lumineuse, aussi appelée étoile filante.' }, { t: 'Une partie parvient à la surface : c’est une <b>météorite</b>', why: 'La météorite, c’est la partie qui ne s’est pas complètement désintégrée.' }, { t: 'L’impact forme un cratère : un <b>astroblème</b>', why: 'Le cratère formé par un tel impact est nommé astroblème.' }],
+    explain: 'Astéroïde (dans l’espace), météore (traînée lumineuse dans l’atmosphère), météorite (la roche qui parvient à la surface), astroblème (le cratère).' },
+  chaine: { title: 'L’histoire d’une aurore polaire : mets les étapes dans l’ordre.', sub: 'Touche les cartes dans l’ordre où les choses arrivent.', hint: 'Pas encore. Tout commence au Soleil et finit dans le ciel de la Terre.',
+    items: [{ t: 'Le <b>Soleil</b> émet des particules', why: 'Tout part du Soleil.' }, { t: 'Le <b>vent solaire</b> voyage en direction de l’espace', why: 'Le vent solaire, c’est ce flux de particules.' }, { t: 'Les particules rencontrent les gaz de la <b>haute atmosphère</b>', why: 'La haute atmosphère de la Terre s’appelle la thermosphère.' }, { t: 'Une <b>aurore polaire</b> illumine le ciel', why: 'Au Nord : aurore boréale. Au Sud : aurore australe.' }],
+    explain: 'Le Soleil émet des particules, le vent solaire voyage dans l’espace, les particules rencontrent les gaz de la haute atmosphère (thermosphère), et l’aurore polaire apparaît.' },
+  echelle: { title: 'Prends du recul : classe du plus petit au plus grand.', sub: 'Touche d’abord le plus petit.', hint: 'Pas encore. Demande-toi : qui tourne autour de qui, et qui contient qui ?',
+    items: [{ t: 'Un <b>satellite</b>', why: 'Un satellite est en orbite autour d’une planète.' }, { t: 'Une <b>planète</b>', why: 'Une planète est en orbite autour du Soleil.' }, { t: 'Le <b>système solaire</b>', why: 'Le système solaire : une étoile, le Soleil, et tout ce qui gravite autour.' }, { t: 'Une <b>galaxie</b>', why: 'Une galaxie est un assemblage d’étoiles.' }, { t: 'L’<b>Univers</b>', why: 'L’Univers est l’ensemble de tout ce qui existe.' }],
+    explain: 'Un satellite tourne autour d’une planète. La planète fait partie du système solaire. Le système solaire fait partie d’une galaxie. Et l’Univers est l’ensemble de tout ce qui existe.' }
+};
+const AS_RECALL = {
+  planetes8: { title: 'Nomme les <b>huit planètes</b> du système solaire.', sub: 'Écris-en une, touche « Ajouter », et ainsi de suite.', placeholder: 'Une planète…', list: AS_PLANETS, extra: [], need: 8, label: 'La liste de tes notes', unit: 'planètes', tip: 'Dans tes notes, la liste commence par les quatre telluriques (Mercure, Vénus, Terre, Mars) et finit par les quatre gazeuses (Jupiter, Saturne, Uranus, Neptune).' },
+  tell: { title: 'Nomme les <b>quatre planètes telluriques</b>.', sub: 'Écris-en une, touche « Ajouter ».', placeholder: 'Une planète…', list: AS_TELL, extra: [], need: 4, label: 'La liste de tes notes', unit: 'planètes telluriques' },
+  gaz: { title: 'Nomme les <b>quatre planètes gazeuses</b> (joviennes).', sub: 'Écris-en une, touche « Ajouter ».', placeholder: 'Une planète…', list: AS_GAZ, extra: [], need: 4, label: 'La liste de tes notes', unit: 'planètes gazeuses' },
+  parties: { title: 'Nomme les <b>trois parties d’une comète</b> selon tes notes.', sub: 'Écris-en une, touche « Ajouter ».', placeholder: 'Une partie…', list: [{ name: 'Noyau', syn: ['noyau', 'le noyau'] }, { name: 'Chevelure', syn: ['chevelure', 'la chevelure'] }, { name: 'Queue ionique', syn: ['queue ionique', 'queue', 'la queue'] }], extra: [], need: 3, label: 'Dans tes notes', unit: 'parties' },
+  facteurs: { title: 'Nomme les <b>deux facteurs</b> dont dépend la force gravitationnelle.', sub: 'Écris-en un, touche « Ajouter ».', placeholder: 'Un facteur…', list: [{ name: 'La masse des corps', syn: ['masse', 'la masse', 'masse des corps', 'la masse des corps', 'leur masse'] }, { name: 'La distance entre eux', syn: ['distance', 'la distance', 'distance entre eux', 'la distance entre eux', 'distance les separant', 'la distance les separant'] }], extra: [], need: 2, label: 'Dans tes notes', unit: 'facteurs' }
+};
+const asTimed = (cfg, time) => Object.assign({}, cfg, { time, sub: `Tu as ${time} secondes. Écris, puis touche « Ajouter ».` });
+// Définitions à trous (niveau 2) : les mots exacts des notes. g = groupe de mots dont l'ordre est libre.
+const AS_CLOZE = {
+  systeme: ['Système composé d’une ', ['étoile'], ', le ', ['Soleil'], ', et de corps ', ['célestes', 'céleste'], ' qui ', ['gravitent', 'gravite'], ' autour de cette étoile.'],
+  satellite: ['Corps céleste en ', ['orbite'], ' autour d’une ', ['planète'], '.'],
+  orbite: ['Trajectoire ', ['courbe'], ' décrite par une ', ['planète'], ' autour du Soleil, ou par un ', ['satellite'], ' autour de sa planète.'],
+  soleil: ['Le Soleil est une ', ['étoile'], ' autour de laquelle gravitent les ', ['huit', '8'], ' planètes du système solaire.'],
+  planete: ['Corps céleste de forme ', ['sphérique'], ', de grande ', ['dimension'], ', solide ou ', ['gazeux'], ', en orbite autour du ', ['Soleil'], '.'],
+  tellurique: ['Planète essentiellement composée de ', { a: ['roches', 'roche'], g: 'rm' }, ' et de ', { a: ['métaux', 'métal', 'metaux'], g: 'rm' }, ' et possédant une surface ', ['solide'], '.'],
+  gazeuse: ['Planète ', ['volumineuse'], ' et peu ', ['dense'], ' composée essentiellement d’éléments ', ['gazeux'], '.'],
+  gazeuse2: ['Elle possède souvent plusieurs ', ['satellites', 'satellite'], '. Dans notre système solaire, ces planètes possèdent des ', ['anneaux', 'anneau'], ' planétaires.'],
+  gravite: ['Force d’', ['attraction'], ' s’exerçant entre deux corps sous l’effet de leur ', ['masse'], ' et de la ', ['distance'], ' les séparant.'],
+  facteurs: ['Elle dépend de deux facteurs importants : 1. la ', { a: ['masse'], g: 'md' }, ' des corps ; 2. la ', { a: ['distance'], g: 'md' }, ' entre eux.'],
+  comete: ['Petit corps constitué de ', { a: ['glace'], g: 'c4' }, ', de ', { a: ['roches', 'roche'], g: 'c4' }, ', de ', { a: ['gaz'], g: 'c4' }, ' et de ', { a: ['poussières', 'poussière'], g: 'c4' }, ' se déplaçant sur de très grandes distances dans le système solaire.'],
+  queue: ['La queue de la comète apparait lorsqu’elle passe près du ', ['soleil'], '.'],
+  parties: [{ a: ['Noyau'], g: 'p3' }, ', ', { a: ['chevelure'], g: 'p3' }, ', ', { a: ['queue', 'queue ionique'], g: 'p3' }, ' ionique.'],
+  asteroide: ['Corps céleste composé de ', { a: ['roches', 'roche'], g: 'a3' }, ', de ', { a: ['métaux', 'métal', 'metaux'], g: 'a3' }, ' ou de ', { a: ['glace'], g: 'a3' }, '.'],
+  ceinture: ['Il gravite autour du Soleil, généralement dans la ', ['ceinture'], ' d’astéroïdes.'],
+  meteore: ['Traînée ', ['lumineuse'], ', aussi appelée ', ['étoile filante'], ', laissée par un ', ['astéroïde'], ' qui pénètre dans l’', ['atmosphère'], ' terrestre et se désintègre.'],
+  meteorite: ['Partie de l’astéroïde (roche), lorsqu’il ne s’est pas complètement ', ['désintégré', 'désintégrée', 'desintegre'], ' à son entrée dans l’atmosphère, qui parvient à la ', ['surface'], ' de la Terre.'],
+  astrobleme: ['Le cratère formé par un tel impact est nommé ', ['astroblème'], '.'],
+  vent: ['Flux de ', ['particules', 'particule'], ' émises par le ', ['soleil'], ' en direction de l’espace.'],
+  champ: ['Le ', ['champ magnétique'], ' terrestre nous protège de ces vents dangereux.'],
+  aurore: ['Phénomène atmosphérique ', ['lumineux'], ' causé par l’interaction des particules du ', ['vent solaire'], ' et des gaz de la haute atmosphère (', ['thermosphère'], ') terrestre.'],
+  nordsud: ['Dans l’hémisphère Nord, une aurore polaire est appelée aurore ', ['boréale'], ', et dans l’hémisphère Sud, aurore ', ['australe'], '.'],
+  galaxie: ['Une galaxie est un assemblage d’', { a: ['étoiles', 'étoile'], g: 'g4' }, ', de ', { a: ['gaz'], g: 'g4' }, ', de ', { a: ['poussières', 'poussière'], g: 'g4' }, ' et de ', { a: ['vide'], g: 'g4' }, ', dans un ', ['disque'], ' en rotation.'],
+  univers: ['L’Univers, au sens cosmologique, est l’ensemble de tout ce qui ', ['existe'], ', régi par un certain nombre de ', ['lois', 'loi'], '.']
+};
+// une ligne à trous : le mot défini devant, puis la phrase des notes ; ids = éléments notés par cette ligne
+function asLine(label, key, ids) {
+  let n = 0; const idOf = () => ids[Math.min(n++, ids.length - 1)];
+  const wide = a => a[0].length >= 12 || a[0].indexOf(' ') >= 0; // un mot : case courte, pour que la définition se lise comme une phrase
+  return (label ? [label + ' : '] : []).concat(AS_CLOZE[key].map(p => typeof p === 'string' ? p : Array.isArray(p) ? { a: p, id: idOf(), wide: wide(p) } : Object.assign({ wide: wide(p.a) }, p, { id: idOf() })));
+}
+function asFill(quest, qn, o, lines, exam) { const l = lines.filter(Boolean); if (!l.length) return null; return Object.assign(writeStep(Object.assign({ quest, qnum: qn, exam }, o, { lines: l })), {}); }
+// Niveau 3 : les idées clés de chaque définition (le corrigé affiché est la définition des notes, mot pour mot)
+const AS_KEYS = {
+  systeme: [KI('une étoile, le Soleil', ['etoile', 'soleil']), KI('des corps célestes', ['corps', 'planete', 'celeste']), KI('qui gravitent autour', ['gravit', 'autour', 'tourn', 'orbite'])],
+  satellite: [KI('un corps céleste en orbite', ['orbite', 'tourn', 'gravit']), KI('autour d’une planète', ['planete'])],
+  orbite: [KI('une trajectoire courbe', ['trajectoire', 'courbe', 'chemin', 'trajet']), KI('une planète autour du Soleil', ['planete', 'soleil']), KI('ou un satellite autour de sa planète', ['satellite', 'lune'])],
+  soleil: [KI('une étoile', ['etoile']), KI('autour de laquelle gravitent les planètes', ['gravit', 'planete', 'autour', 'tourn'])],
+  planete: [KI('de forme sphérique', ['spherique', 'sphere', 'rond', 'boule']), KI('de grande dimension', ['grande dimension', 'grand', 'gros', 'dimension']), KI('solide ou gazeux', ['solide', 'gaz'], true), KI('en orbite autour du Soleil', ['soleil'])],
+  tellurique: [KI('composée de roches', ['roche']), KI('et de métaux', ['metau', 'metal']), KI('avec une surface solide', ['solide'])],
+  gazeuse: [KI('volumineuse', ['volumineu', 'gros', 'grand', 'enorme', 'geante']), KI('peu dense', ['dense', 'densite']), KI('composée d’éléments gazeux', ['gaz'])],
+  gravite: [KI('une force d’attraction', ['attraction', 'attir']), KI('entre deux corps', ['deux corps', 'corps', 'objets']), KI('leur masse', ['masse']), KI('la distance les séparant', ['distance'])],
+  comete: [KI('de la glace', ['glace']), KI('des roches', ['roche']), KI('du gaz et des poussières', ['gaz', 'poussiere']), KI('de très grandes distances dans le système solaire', ['distance', 'systeme solaire', 'loin'], true)],
+  asteroide: [KI('un corps céleste', ['corps', 'celeste', 'morceau', 'objet'], true), KI('de roches', ['roche']), KI('de métaux', ['metau', 'metal']), KI('ou de glace', ['glace'])],
+  meteore: [KI('une traînée lumineuse', ['trainee', 'lumineu', 'lumiere']), KI('aussi appelée étoile filante', ['etoile filante', 'filante']), KI('un astéroïde qui pénètre dans l’atmosphère', ['atmosphere']), KI('et se désintègre', ['desint', 'brul', 'detrui'])],
+  meteorite: [KI('une partie de l’astéroïde (roche)', ['partie', 'morceau', 'roche', 'reste', 'bout']), KI('qui ne s’est pas complètement désintégrée', ['desint', 'brul', 'detrui']), KI('qui parvient à la surface de la Terre', ['surface', 'sol', 'terre'])],
+  astrobleme: [KI('un cratère', ['cratere', 'trou']), KI('formé par un impact', ['impact', 'meteorite', 'collision', 'frapp', 'tomb'])],
+  vent: [KI('un flux de particules', ['particule']), KI('émises par le Soleil', ['soleil']), KI('en direction de l’espace', ['espace'], true)],
+  aurore: [KI('un phénomène lumineux', ['lumineu', 'lumiere']), KI('les particules du vent solaire', ['vent solaire', 'particule']), KI('les gaz de la haute atmosphère (thermosphère)', ['atmosphere', 'thermosphere', 'gaz'])],
+  galaxie: [KI('un assemblage d’étoiles', ['etoile']), KI('de gaz, de poussières et de vide', ['gaz', 'poussiere', 'vide']), KI('dans un disque en rotation', ['disque', 'rotation', 'tourn'])],
+  univers: [KI('l’ensemble de tout ce qui existe', ['tout ce qui existe', 'tout', 'ensemble']), KI('régi par des lois', ['loi', 'regle'])]
+};
+const asEssayField = (k, P) => ({ id: P + 'd-' + k, label: `Écris la définition de tes notes : <b>${AS[k].term}</b>`, rows: 2, model: `<span class="tn">Tes notes</span> « ${AS[k].def} »`, keys: AS_KEYS[k] });
+const AS_WHY = { // questions à développement : expliquer dans ses mots (niveau 3)
+  'a3-comete-queue': { id: 'a3-comete-queue', label: 'Quand la queue d’une comète apparaît-elle ?', rows: 1, model: '<span class="tn">Tes notes</span> « La queue de la comète apparait lorsqu’elle passe près du soleil. »', keys: [KI('lorsqu’elle passe près du Soleil', ['soleil'])] },
+  'a3-ceinture': { id: 'a3-ceinture', label: 'Où les astéroïdes gravitent-ils généralement ?', rows: 1, model: '<span class="tn">Tes notes</span> « Il gravite autour du Soleil, généralement dans la ceinture d’astéroïdes. »', keys: [KI('autour du Soleil', ['soleil'], true), KI('dans la ceinture d’astéroïdes', ['ceinture'])] },
+  'a3-astrobleme': { id: 'a3-astrobleme', label: 'Qu’est-ce qu’un astroblème ?', rows: 1, model: '<span class="tn">Tes notes</span> « Le cratère formé par un tel impact est nommé astroblème. »', keys: AS_KEYS.astrobleme },
+  'a3-suite': { id: 'a3-suite', label: 'Explique la différence entre un météore et une météorite.', rows: 3, model: 'Le <b>météore</b> est la traînée lumineuse (l’étoile filante) laissée par un astéroïde qui pénètre dans l’atmosphère et se désintègre. La <b>météorite</b> est la partie de l’astéroïde qui ne s’est pas complètement désintégrée et qui parvient à la surface de la Terre.', keys: [KI('le météore : une traînée lumineuse, une étoile filante', ['trainee', 'lumineu', 'lumiere', 'etoile filante', 'filante']), KI('la météorite : la partie qui parvient à la surface', ['surface', 'sol', 'terre', 'roche', 'morceau', 'partie'])] },
+  'a3-champ': { id: 'a3-champ', label: 'Qu’est-ce qui nous protège du vent solaire ?', rows: 1, model: '<span class="tn">Tes notes</span> « Le champ magnétique terrestre nous protège de ces vents dangereux. »', keys: [KI('le champ magnétique terrestre', ['champ magnetique', 'magneti'])] },
+  'a3-chaine': { id: 'a3-chaine', label: 'Explique comment se forme une aurore polaire.', rows: 3, model: `<span class="tn">Tes notes</span> « ${AS.aurore.def} »`, keys: [KI('les particules du vent solaire', ['vent solaire', 'particule']), KI('rencontrent les gaz de la haute atmosphère', ['atmosphere', 'thermosphere', 'gaz']), KI('ce qui produit de la lumière', ['lumineu', 'lumiere', 'brill', 'eclair'], true)] },
+  'a3-thermo': { id: 'a3-thermo', label: 'Quel nom tes notes donnent-elles à la haute atmosphère terrestre ?', rows: 1, model: '<span class="tn">Tes notes</span> « … des gaz de la haute atmosphère (thermosphère) terrestre. »', keys: [KI('la thermosphère', ['thermosphere'])] },
+  'a3-boreale': { id: 'a3-boreale', label: 'Comment appelle-t-on une aurore polaire dans l’hémisphère Nord ?', rows: 1, model: `<span class="tn">Tes notes</span> « ${AS.aurore.plus} »`, keys: [KI('aurore boréale', ['boreale'])] },
+  'a3-australe': { id: 'a3-australe', label: 'Et dans l’hémisphère Sud ?', rows: 1, model: `<span class="tn">Tes notes</span> « ${AS.aurore.plus} »`, keys: [KI('aurore australe', ['australe'])] },
+  'a3-facteurs': { id: 'a3-facteurs', label: 'De quels deux facteurs dépend l’intensité de la force gravitationnelle ?', rows: 2, model: `<span class="tn">Tes notes</span> « ${AS.gravite.plus} »`, keys: [KI('la masse des corps', ['masse']), KI('la distance entre eux', ['distance'])] },
+  'a3-grav-app': { id: 'a3-grav-app', label: 'Deux corps s’éloignent l’un de l’autre. Que devient la force gravitationnelle entre eux, et pourquoi ?', rows: 2, model: 'Elle <b>diminue</b>, parce que la force gravitationnelle dépend de la distance entre les corps : plus ils sont loin, moins ils s’attirent.', keys: [KI('elle diminue', ['diminu', 'baisse', 'moins', 'faibl', 'petit']), KI('à cause de la distance', ['distance', 'loin', 'eloign'])] },
+  'a3-anneaux': { id: 'a3-anneaux', label: 'Dans notre système solaire, que possèdent les planètes gazeuses ?', rows: 1, model: `<span class="tn">Tes notes</span> « ${AS.gazeuse.plus} »`, keys: [KI('des anneaux planétaires', ['anneau']), KI('souvent plusieurs satellites', ['satellite', 'lune'], true)] },
+  'a3-compo': { id: 'a3-compo', label: 'À ce jour, quels corps célestes gravitent autour du Soleil ?', rows: 3, model: `<span class="tn">Tes notes</span> « ${AS.systeme.plus} »`, keys: [KI('huit planètes et leurs satellites', ['planete']), KI('cinq planètes naines', ['naine']), KI('des astéroïdes', ['asteroide']), KI('des comètes', ['comete'])] },
+  'a3-echelle': { id: 'a3-echelle', label: 'Classe du plus petit au plus grand, puis explique : planète, galaxie, système solaire, Univers.', rows: 3, model: 'La <b>planète</b> est en orbite autour du Soleil, dans le <b>système solaire</b>. Le système solaire a une étoile ; une <b>galaxie</b> est un assemblage d’étoiles. L’<b>Univers</b> est l’ensemble de tout ce qui existe.', keys: [KI('planète, système solaire, galaxie, Univers', ['planete']), KI('la galaxie : un assemblage d’étoiles', ['etoile', 'assemblage']), KI('l’Univers : tout ce qui existe', ['tout', 'ensemble'])] }
+};
+
+function buildQuestAS(key, focus, exam) {
+  const L = asLevelOf(key), P = AS_PRE[L - 1], th = key.slice(3), q = QUESTS_AS.find(x => x.key === 'as-' + th), qn = AS_TN(q.n);
+  const inc = id => !focus || focus.has(id), steps = [], push = s => { if (s) steps.push(s); };
+  const bank = L === 1 ? ABANK() : null;
+  const M = id => inc(P + id) && push(asMcq(key, qn, P + id, bank, exam));
+  const R = (id, cfg) => inc(P + id) && push(asRecall(key, qn, P + id, cfg, exam));
+  const Sq = (id, o) => inc(P + id) && push(asSeq(key, qn, P + id, o, exam));
+  const defs = ks => ks.filter(k => inc(P + 'd-' + k));
+  if (L === 1) {
+    if (th === 'systeme') {
+      const ks = defs(['systeme', 'soleil', 'planete', 'satellite', 'orbite']); if (ks.length) push(asMatch(key, qn, ks, P, exam));
+      M('compo'); R('planetes8', AS_RECALL.planetes8);
+    }
+    if (th === 'planetes') {
+      if (inc(P + 'tri')) { const mk = () => ({ type: 'sort', quest: key, qnum: qn, item: P + 'tri', title: 'Classe chaque planète : tellurique ou gazeuse ?', explain: 'Les quatre telluriques : Mercure, Vénus, Terre et Mars. Les quatre gazeuses (joviennes) : Jupiter, Saturne, Uranus et Neptune.', buckets: [{ key: 'tell', label: 'Tellurique', hint: 'Roches et métaux, surface solide' }, { key: 'gaz', label: 'Gazeuse ou jovienne', hint: 'Volumineuse, peu dense, éléments gazeux' }], cards: shuffle(AS_PLANETS).map(p => ({ id: 'tri-' + p.k, text: p.name, bucket: p.t })), subset: exam ? null : () => mk() }); push(mk()); }
+      if (inc(P + 'd-tellurique')) push(asCircle(key, qn, P + 'd-tellurique', 'La définition de tes notes : <b>planète tellurique</b>. <span class="muted">Choisis les bons mots.</span>', ['Planète essentiellement composée de ', { o: ['roches', 'gaz'], a: 0 }, ' et de ', { o: ['glace', 'métaux'], a: 1 }, ' et possédant une surface ', { o: ['solide', 'gazeuse'], a: 0 }, '.'], asX('tellurique', true), exam));
+      if (inc(P + 'd-gazeuse')) push(asCircle(key, qn, P + 'd-gazeuse', 'La définition de tes notes : <b>planète gazeuse ou jovienne</b>. <span class="muted">Choisis les bons mots.</span>', ['Planète ', { o: ['petite', 'volumineuse'], a: 1 }, ' et peu ', { o: ['dense', 'lumineuse'], a: 0 }, ' composée essentiellement d’éléments ', { o: ['rocheux', 'gazeux'], a: 1 }, '.'], asX('gazeuse', true), exam));
+      M('tell-liste'); M('gaz-liste'); M('anneaux');
+    }
+    if (th === 'gravite') {
+      if (inc(P + 'd-gravite')) push(asCircle(key, qn, P + 'd-gravite', 'La définition de tes notes : <b>force gravitationnelle</b>. <span class="muted">Choisis les bons mots.</span>', ['Force d’', { o: ['attraction', 'explosion'], a: 0 }, ' s’exerçant entre deux corps sous l’effet de leur ', { o: ['couleur', 'masse'], a: 1 }, ' et de la ', { o: ['distance', 'température'], a: 0 }, ' les séparant.'], asX('gravite', true), exam));
+      M('facteurs');
+      if (inc(P + 'grav-app')) { const mk = () => ({ type: 'swipe', quest: key, qnum: qn, item: P + 'grav-app', title: 'La force gravitationnelle entre deux corps : elle <span style="color:var(--good)">augmente</span> ou elle <span style="color:var(--warn)">diminue</span> ?', left: { label: 'Diminue', color: 'var(--warn)', icon: 'comete' }, right: { label: 'Augmente', color: 'var(--good)', icon: 'soleil' }, cardIcon: 'terrelune', tip: AS_GRAV_X,
+        cards: shuffle([{ id: 'g1', text: 'Les deux corps se rapprochent.', right: true, why: 'Moins de distance : les corps s’attirent plus.' }, { id: 'g2', text: 'Les deux corps s’éloignent.', right: false, why: 'Plus de distance : les corps s’attirent moins.' }, { id: 'g3', text: 'Un des corps est remplacé par un corps plus massif.', right: true, why: 'Plus de masse : les corps s’attirent plus.' }, { id: 'g4', text: 'Un des corps est remplacé par un corps moins massif.', right: false, why: 'Moins de masse : les corps s’attirent moins.' }]), subset: exam ? null : () => mk() }); push(mk()); }
+    }
+    if (th === 'petits') {
+      const ks = defs(['comete', 'asteroide', 'meteore', 'meteorite']); if (ks.length) push(asMatch(key, qn, ks, P, exam));
+      Sq('suite', AS_SEQ.suite); M('astrobleme'); M('comete-queue'); R('comete-parties', AS_RECALL.parties); M('ceinture');
+    }
+    if (th === 'aurores') {
+      if (inc(P + 'd-aurore')) push(asCircle(key, qn, P + 'd-aurore', 'La définition de tes notes : <b>aurore polaire</b>. <span class="muted">Choisis les bons mots.</span>', ['Phénomène atmosphérique ', { o: ['lumineux', 'sonore'], a: 0 }, ' causé par l’interaction des particules du ', { o: ['champ magnétique', 'vent solaire'], a: 1 }, ' et des gaz de la ', { o: ['haute', 'basse'], a: 0 }, ' atmosphère (', { o: ['hémisphère', 'thermosphère'], a: 1 }, ') terrestre.'], asX('aurore'), exam));
+      M('d-vent'); M('champ'); M('thermo');
+      const ns = [['boreale', true], ['australe', false]].filter(x => inc(P + x[0]));
+      if (ns.length) { const mk = l => ({ type: 'swipe', quest: key, qnum: qn, title: 'Aurore <span style="color:var(--good)">boréale</span> ou aurore <span style="color:var(--warn)">australe</span> ?', left: { label: 'Australe', color: 'var(--warn)', icon: 'aurore' }, right: { label: 'Boréale', color: 'var(--good)', icon: 'aurore' }, cardIcon: 'aurore', tip: 'Truc : <b>boréale</b> = Nord, comme la forêt boréale. <b>Australe</b> = Sud, comme l’Australie.',
+        cards: shuffle([{ id: P + 'boreale', text: 'Une aurore polaire dans l’hémisphère Nord', right: true, why: 'Hémisphère Nord : aurore boréale.' }, { id: P + 'australe', text: 'Une aurore polaire dans l’hémisphère Sud', right: false, why: 'Hémisphère Sud : aurore australe.' }, { id: P + 'boreale', text: 'Une aurore dans le ciel du nord du Québec', right: true, why: 'Le Québec est dans l’hémisphère Nord : aurore boréale.' }, { id: P + 'australe', text: 'Une aurore dans le ciel de l’Antarctique', right: false, why: 'L’Antarctique est dans l’hémisphère Sud : aurore australe.' }].filter(c => l.includes(c.id))), subset: exam ? null : f => { const r = l.filter(id => f.includes(id)); return r.length ? mk(r) : null; } }); push(mk(ns.map(x => P + x[0]))); }
+      Sq('chaine', AS_SEQ.chaine);
+    }
+    if (th === 'recul') {
+      if (inc(P + 'd-galaxie')) push(asCircle(key, qn, P + 'd-galaxie', 'La définition de tes notes : <b>galaxie</b>. <span class="muted">Choisis les bons mots.</span>', ['Une galaxie est un assemblage d’', { o: ['étoiles', 'astéroïdes'], a: 0 }, ', de gaz, de ', { o: ['métaux', 'poussières'], a: 1 }, ' et de vide, dans un ', { o: ['disque', 'anneau'], a: 0 }, ' en rotation.'], asX('galaxie'), exam));
+      if (inc(P + 'd-univers')) push(asCircle(key, qn, P + 'd-univers', 'La définition de tes notes : <b>Univers</b>. <span class="muted">Choisis les bons mots.</span>', ['L’Univers, au sens cosmologique, est l’ensemble de tout ce qui ', { o: ['brille', 'existe'], a: 1 }, ', régi par un certain nombre de ', { o: ['lois', 'planètes'], a: 0 }, '.'], asX('univers'), exam));
+      Sq('echelle', AS_SEQ.echelle);
+    }
+  }
+  if (L === 2) {
+    const F = (o, rows) => push(asFill(key, qn, Object.assign({ intro: 'Ce sont les mots exacts de tes notes. Les petites fautes de frappe sont acceptées.' }, o), rows.filter(r => r[2].some(inc)).map(r => asLine(r[0], r[1], r[2])), exam));
+    if (th === 'systeme') {
+      F({ title: 'Complète les définitions de tes notes.' }, [['Système solaire', 'systeme', [P + 'd-systeme']], ['Le Soleil', 'soleil', [P + 'd-soleil']], ['Planète', 'planete', [P + 'd-planete']]]);
+      F({ title: 'Complète les définitions de tes notes.' }, [['Satellite', 'satellite', [P + 'd-satellite']], ['Orbite', 'orbite', [P + 'd-orbite']]]);
+      if (inc(P + 'compo')) push(writeStep({ quest: key, qnum: qn, exam, title: 'Les corps célestes du système solaire, d’après tes notes.', explain: asNote('systeme', true), lines: [['À ce jour, ces corps sont : ', { a: ['huit', '8'], id: P + 'compo', wide: false }, ' planètes et leurs satellites ; ', { a: ['cinq', '5'], id: P + 'compo', wide: false }, ' planètes naines et leurs satellites ; des ', { a: ['astéroïdes', 'astéroïde'], id: P + 'compo', wide: true, g: 'ac' }, ' et des ', { a: ['comètes', 'comète'], id: P + 'compo', wide: true, g: 'ac' }, '.']] }));
+      R('planetes8', asTimed(AS_RECALL.planetes8, 90));
+    }
+    if (th === 'planetes') {
+      F({ title: 'Complète les définitions de tes notes.' }, [['Planète tellurique', 'tellurique', [P + 'd-tellurique']], ['Planète gazeuse ou jovienne', 'gazeuse', [P + 'd-gazeuse']], ['', 'gazeuse2', [P + 'anneaux']]]);
+      R('tell-liste', AS_RECALL.tell); R('gaz-liste', AS_RECALL.gaz);
+      if (inc(P + 'tri')) { const mk = () => { const ps = shuffle(AS_PLANETS).slice(0, 4); return writeStep({ quest: key, qnum: qn, exam, title: 'Tellurique ou gazeuse ? Écris la famille de chaque planète.', intro: 'Écris « tellurique » ou « gazeuse ».', explain: 'Telluriques : Mercure, Vénus, Terre et Mars. Gazeuses (joviennes) : Jupiter, Saturne, Uranus et Neptune.', lines: ps.map(p => [p.name + ' : planète ', { a: p.t === 'tell' ? ['tellurique', 'telluriques'] : ['gazeuse', 'jovienne', 'gazeuse ou jovienne'], id: P + 'tri', wide: true }]) }); }; const st = mk(); st.subset = exam ? null : () => mk(); push(st); }
+    }
+    if (th === 'gravite') {
+      F({ title: 'Complète la définition et les deux facteurs.' }, [['Force gravitationnelle', 'gravite', [P + 'd-gravite']], ['', 'facteurs', [P + 'facteurs']]]);
+      if (inc(P + 'grav-app')) { const mk = () => writeStep({ quest: key, qnum: qn, exam, title: 'Comprendre : écris « augmente » ou « diminue ».', explain: AS_GRAV_X, lines: shuffle([['Les deux corps s’éloignent : la force gravitationnelle ', { a: ['diminue', 'diminuer', 'baisse'], id: P + 'grav-app', wide: true }, '.'], ['Les deux corps se rapprochent : la force gravitationnelle ', { a: ['augmente', 'augmenter', 'grandit'], id: P + 'grav-app', wide: true }, '.'], ['Un des corps devient plus massif : la force gravitationnelle ', { a: ['augmente', 'augmenter', 'grandit'], id: P + 'grav-app', wide: true }, '.']]).slice(0, 2) }); const st = mk(); st.subset = exam ? null : () => mk(); push(st); }
+    }
+    if (th === 'petits') {
+      F({ title: 'Complète les définitions de tes notes.' }, [['Comète', 'comete', [P + 'd-comete']], ['', 'queue', [P + 'comete-queue']], ['Les trois parties', 'parties', [P + 'comete-parties']]]);
+      F({ title: 'Complète les définitions de tes notes.' }, [['Astéroïde', 'asteroide', [P + 'd-asteroide']], ['', 'ceinture', [P + 'ceinture']]]);
+      F({ title: 'Complète les définitions de tes notes.' }, [['Météore', 'meteore', [P + 'd-meteore']], ['Météorite', 'meteorite', [P + 'd-meteorite']], ['', 'astrobleme', [P + 'astrobleme']]]);
+      Sq('suite', AS_SEQ.suite);
+    }
+    if (th === 'aurores') {
+      F({ title: 'Complète les définitions de tes notes.' }, [['Vent solaire', 'vent', [P + 'd-vent']], ['', 'champ', [P + 'champ']]]);
+      F({ title: 'Complète les définitions de tes notes.' }, [['Aurore polaire', 'aurore', [P + 'd-aurore', P + 'd-aurore', P + 'thermo']], ['', 'nordsud', [P + 'boreale', P + 'australe']]]);
+      Sq('chaine', AS_SEQ.chaine);
+    }
+    if (th === 'recul') {
+      F({ title: 'Complète les définitions de tes notes.' }, [['Galaxie', 'galaxie', [P + 'd-galaxie']], ['Univers', 'univers', [P + 'd-univers']]]);
+      Sq('echelle', AS_SEQ.echelle);
+    }
+  }
+  if (L === 3) {
+    const E = (o, fields) => { const f = fields.filter(x => inc(x.id)); if (f.length) push(essayStep(Object.assign({ quest: key, qnum: qn, intro: 'Écris de mémoire. L’appli cherche les idées clés, puis te montre la définition de tes notes, mot pour mot.' }, o), f, exam)); };
+    const D = ks => ks.map(k => asEssayField(k, P)), Wy = ids => ids.map(id => AS_WHY[id]);
+    if (th === 'systeme') {
+      E({ title: 'Rédige les définitions de tes notes.' }, D(['systeme', 'soleil', 'planete']));
+      E({ title: 'Rédige les définitions de tes notes.' }, D(['satellite', 'orbite']).concat(Wy(['a3-compo'])));
+      R('planetes8', asTimed(AS_RECALL.planetes8, 60));
+    }
+    if (th === 'planetes') {
+      E({ title: 'Rédige les définitions de tes notes.' }, D(['tellurique', 'gazeuse']).concat(Wy(['a3-anneaux'])));
+      R('tell-liste', asTimed(AS_RECALL.tell, 30)); R('gaz-liste', asTimed(AS_RECALL.gaz, 30));
+      if (inc(P + 'tri')) { const mk = () => { const ps = shuffle(AS_PLANETS).slice(0, 5); return writeStep({ quest: key, qnum: qn, exam, title: 'Tellurique ou gazeuse ? Écris la famille de chaque planète.', intro: 'Écris « tellurique » ou « gazeuse ».', explain: 'Telluriques : Mercure, Vénus, Terre et Mars. Gazeuses (joviennes) : Jupiter, Saturne, Uranus et Neptune.', lines: ps.map(p => [p.name + ' : planète ', { a: p.t === 'tell' ? ['tellurique', 'telluriques'] : ['gazeuse', 'jovienne', 'gazeuse ou jovienne'], id: P + 'tri', wide: true }]) }); }; const st = mk(); st.subset = exam ? null : () => mk(); push(st); }
+    }
+    if (th === 'gravite') E({ title: 'La force gravitationnelle : rédige et explique.' }, D(['gravite']).concat(Wy(['a3-facteurs', 'a3-grav-app'])));
+    if (th === 'petits') {
+      E({ title: 'Rédige les définitions de tes notes.' }, D(['comete', 'asteroide']).concat(Wy(['a3-comete-queue', 'a3-ceinture'])));
+      R('comete-parties', asTimed(AS_RECALL.parties, 30));
+      E({ title: 'Rédige les définitions, puis explique la différence.' }, D(['meteore', 'meteorite']).concat(Wy(['a3-astrobleme', 'a3-suite'])));
+    }
+    if (th === 'aurores') {
+      E({ title: 'Le vent solaire : rédige et explique.' }, D(['vent']).concat(Wy(['a3-champ'])));
+      E({ title: 'L’aurore polaire : rédige et explique.' }, D(['aurore']).concat(Wy(['a3-thermo', 'a3-boreale', 'a3-australe', 'a3-chaine'])));
+    }
+    if (th === 'recul') E({ title: 'Rédige les définitions de tes notes, puis prends du recul.' }, D(['galaxie', 'univers']).concat(Wy(['a3-echelle'])));
+  }
+  return steps;
+}
+const buildExamAS = L => () => (L === 1 ? QUESTS_AS : L === 2 ? QUESTS_AS2 : QUESTS_AS3).flatMap(q => buildQuestAS(q.key, null, true));
+
+/* ---------- Cartes d'étude (fiches) : les définitions des notes, mot pour mot ---------- */
+const asCard = (k, extra) => `<div class="ascard"><h4>${AS[k].term}<button type="button" class="a3" data-a3d="${k}">${MODEL3D.vivant ? 'Allume-la en 3D' : 'Voir en 3D'}</button></h4><p class="asdef"><span class="tn">Tes notes</span> « ${AS[k].def} »</p>${AS[k].plus ? `<p class="asdef plus">${AS[k].plus}</p>` : ''}${extra || ''}<p class="asmots"><span class="dm">Dans d’autres mots :</span> ${AS[k].mots}</p></div>`;
+const asSec = (title, ks, more) => fSec(title, `<div class="ascards">${ks.map(k => asCard(k)).join('')}</div>${more || ''}`);
+const AS_PCOL = { mercure: '#9aa0a8', venus: '#e0b25a', terre: '#3f8fd6', mars: '#cf5a3a', jupiter: '#d9a066', saturne: '#e3c77a', uranus: '#7fd6d6', neptune: '#4a6fd6' };
+function asSvgSystem() { // schéma : le Soleil et les huit planètes dans l'ordre de la liste des notes (rien n'est à l'échelle)
+  const xs = [118, 166, 216, 266, 372, 470, 556, 630], rs = [7, 10, 11, 8, 26, 22, 16, 15];
+  return `<div class="asvgw"><svg class="asvg" viewBox="0 0 680 230" role="img" aria-label="Schéma du système solaire">
+    <rect width="680" height="230" rx="14" fill="#0b1433"/><g fill="#fff" opacity=".7">${Array.from({ length: 70 }, (_, i) => [(i * 97) % 680, (i * 53) % 230, i % 3 ? 1 : 1.6]).filter(([x, y]) => !(y > 36 && y < 64) && !(y > 74 && y < 126) && !(y > 132 && y < 160) && !(y < 36 && x > 336) && !(y > 168 && y < 218 && x > 86 && x < 370)).map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>
+    <circle cx="-30" cy="100" r="92" fill="#f2b705"/><circle cx="-30" cy="100" r="104" fill="none" stroke="#f2b705" stroke-opacity=".35" stroke-width="8"/>
+    <text x="14" y="104" font-family="Nunito,sans-serif" font-weight="900" font-size="15" fill="#3b2a14">Soleil</text>
+    <g fill="#8d93a6">${Array.from({ length: 26 }, (_, i) => `<circle cx="${306 + (i * 7) % 26}" cy="${24 + (i * 37) % 150}" r="${1.4 + (i % 3) * .5}"/>`).join('')}</g>
+    <text x="319" y="196" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="11.5" fill="#c9cfe0">ceinture</text><text x="319" y="210" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="11.5" fill="#c9cfe0">d’astéroïdes</text>
+    ${AS_PLANETS.map((p, i) => `<g>${p.k === 'saturne' ? `<ellipse cx="${xs[i]}" cy="100" rx="${rs[i] + 15}" ry="6" fill="none" stroke="#f1e2a8" stroke-width="3.5"/>` : ''}<circle cx="${xs[i]}" cy="100" r="${rs[i]}" fill="${AS_PCOL[p.k]}" stroke="#fff" stroke-opacity=".5" stroke-width="1.2"/><text x="${xs[i]}" y="${i % 2 ? 150 : 56}" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="900" font-size="13" fill="#fff">${p.name}</text></g>`).join('')}
+    <g font-family="Nunito,sans-serif" font-weight="900" font-size="12.5"><rect x="96" y="176" width="196" height="24" rx="12" fill="#cf5a3a"/><text x="194" y="193" text-anchor="middle" fill="#fff">4 planètes telluriques</text><rect x="346" y="6" width="312" height="24" rx="12" fill="#4a6fd6"/><text x="502" y="23" text-anchor="middle" fill="#fff">4 planètes gazeuses ou joviennes</text></g></svg></div>
+    <p class="muted" style="font-size:14px;margin-top:6px">Schéma de l’appli : les tailles et les distances ne sont pas à l’échelle.</p>`;
+}
+function asSvgComet() {
+  return `<div class="asvgw"><svg class="asvg" viewBox="0 0 680 190" role="img" aria-label="Les trois parties d’une comète">
+    <defs><linearGradient id="asq" x1="0" x2="1"><stop offset="0" stop-color="#9fe8ff" stop-opacity=".95"/><stop offset="1" stop-color="#9fe8ff" stop-opacity="0"/></linearGradient><radialGradient id="asc"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bfefff" stop-opacity="0"/></radialGradient></defs>
+    <rect width="680" height="190" rx="14" fill="#0b1433"/><circle cx="40" cy="95" r="70" fill="#f2b705"/><text x="14" y="100" font-family="Nunito,sans-serif" font-weight="900" font-size="14" fill="#3b2a14">Soleil</text>
+    <path d="M250 95L640 40L640 150Z" fill="url(#asq)"/><circle cx="250" cy="95" r="46" fill="url(#asc)"/><circle cx="250" cy="95" r="13" fill="#8a8f99" stroke="#fff" stroke-width="2"/>
+    <g font-family="Nunito,sans-serif" font-weight="900" font-size="15" fill="#fff"><text x="250" y="170" text-anchor="middle">noyau</text><path d="M250 154L250 112" stroke="#fff" stroke-width="2"/><text x="200" y="34" text-anchor="middle">chevelure</text><path d="M210 40L232 66" stroke="#fff" stroke-width="2"/><text x="500" y="100" text-anchor="middle">queue ionique</text></g></svg></div>
+    <p class="muted" style="font-size:14px;margin-top:6px">Schéma de l’appli. Tes notes : « La queue de la comète apparait lorsqu’elle passe près du soleil. »</p>`;
+}
+function asSvgFall() {
+  const T = 'font-family="Nunito,sans-serif"';
+  const B = (x, col, t1, t2) => `<g><rect x="${x}" y="186" width="150" height="54" rx="12" fill="${col}"/><text x="${x + 75}" y="209" text-anchor="middle" ${T} font-weight="900" font-size="16" fill="#fff">${t1}</text><text x="${x + 75}" y="228" text-anchor="middle" ${T} font-weight="800" font-size="11.5" fill="#fff">${t2}</text></g>`;
+  const L = (x, y) => `<path d="M${x} ${y}V186" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>`;
+  return `<div class="asvgw"><svg class="asvg" viewBox="0 0 680 252" role="img" aria-label="De l’astéroïde à l’astroblème">
+    <rect width="680" height="252" rx="14" fill="#0b1433"/><rect y="72" width="680" height="80" fill="#1c3a6e" opacity=".6"/><rect y="152" width="680" height="18" fill="#6b5a3a"/>
+    <g fill="#fff" opacity=".7"><circle cx="150" cy="22" r="1.4"/><circle cx="252" cy="48" r="1.2"/><circle cx="338" cy="18" r="1.6"/><circle cx="452" cy="40" r="1.2"/><circle cx="548" cy="24" r="1.5"/><circle cx="632" cy="52" r="1.2"/></g>
+    <text x="12" y="20" ${T} font-weight="800" font-size="12" fill="#c9cfe0">l’espace</text><text x="12" y="90" ${T} font-weight="800" font-size="12" fill="#c9cfe0">l’atmosphère terrestre</text><text x="12" y="165" ${T} font-weight="800" font-size="11.5" fill="#f3e6c8">la surface de la Terre</text>
+    ${L(87, 52)}${L(251, 124)}${L(415, 152)}${L(579, 166)}
+    <circle cx="87" cy="38" r="13" fill="#8a8f99" stroke="#fff" stroke-width="2"/><circle cx="83" cy="34" r="3" fill="#6f7480"/><circle cx="92" cy="42" r="2" fill="#6f7480"/>
+    <path d="M176 66L238 110" stroke="#ffd23f" stroke-opacity=".4" stroke-width="5" stroke-linecap="round"/><path d="M212 92L246 116" stroke="#ffd23f" stroke-width="8" stroke-linecap="round"/><circle cx="251" cy="119" r="6" fill="#fff6c9"/>
+    <circle cx="415" cy="145" r="7" fill="#8a8f99" stroke="#fff" stroke-width="1.6"/>
+    <path d="M538 152q41 30 82 0Z" fill="#3b2f1c"/><path d="M530 152q8 -7 14 0M614 152q6 -7 14 0" fill="none" stroke="#c9b28a" stroke-width="3" stroke-linecap="round"/>
+    ${B(12, '#5a6478', 'astéroïde', 'gravite autour du Soleil')}${B(176, '#c98a12', 'météore', 'traînée lumineuse')}${B(340, '#7a5a3a', 'météorite', 'parvient à la surface')}${B(504, '#8c2f1b', 'astroblème', 'le cratère de l’impact')}
+    <g stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M164 213h9m-4 -4l4 4l-4 4M328 213h9m-4 -4l4 4l-4 4M492 213h9m-4 -4l4 4l-4 4"/></g></svg></div>
+    <p class="muted" style="font-size:14px;margin-top:6px">Schéma de l’appli, pour comprendre. Rien n’est à l’échelle.</p>`;
+}
+function asSvgAurora() {
+  const T = 'font-family="Nunito,sans-serif"';
+  return `<div class="asvgw"><svg class="asvg" viewBox="0 0 680 224" role="img" aria-label="Du Soleil à l’aurore polaire">
+    <rect width="680" height="224" rx="14" fill="#0b1433"/><circle cx="20" cy="110" r="80" fill="#f2b705"/><text x="10" y="115" ${T} font-weight="900" font-size="14" fill="#3b2a14">Soleil</text>
+    <g stroke="#ffd98a" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round">${[60, 85, 110, 135, 160].map(y => `<path d="M112 ${y}H338"/>`).join('')}</g>
+    <g fill="#ffd98a">${[60, 85, 110, 135, 160].map(y => `<path d="M340 ${y - 5}l9 5l-9 5Z"/>`).join('')}</g>
+    <text x="226" y="40" text-anchor="middle" ${T} font-weight="900" font-size="15" fill="#ffd98a">vent solaire : flux de particules</text>
+    <g fill="none" stroke="#7fd6ff" stroke-width="2.5" opacity=".9"><path d="M440 30C350 60 350 160 440 190"/><path d="M440 30C530 60 530 160 440 190"/><path d="M440 46C382 70 382 150 440 174"/><path d="M440 46C498 70 498 150 440 174"/></g>
+    <circle cx="440" cy="110" r="44" fill="#2f7fd6" stroke="#fff" stroke-width="2"/><path d="M418 92q14 -12 26 0q10 12 -4 22q-16 6 -22 -22Z" fill="#3fa34d"/><path d="M448 122q12 -4 16 8q-6 12 -16 -8Z" fill="#3fa34d"/>
+    <path d="M414 70q26 -16 52 0" fill="none" stroke="#5cf2a6" stroke-width="7" stroke-linecap="round"/><path d="M414 150q26 16 52 0" fill="none" stroke="#b58cff" stroke-width="7" stroke-linecap="round"/>
+    <g stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"><path d="M470 64L522 58"/><path d="M470 156L522 162"/></g>
+    <g ${T} font-weight="900" font-size="13.5" fill="#fff"><text x="528" y="58">aurore boréale</text><text x="528" y="75" font-size="11.5" fill="#c9cfe0">hémisphère Nord</text><text x="528" y="162">aurore australe</text><text x="528" y="179" font-size="11.5" fill="#c9cfe0">hémisphère Sud</text><text x="440" y="213" text-anchor="middle" fill="#7fd6ff">champ magnétique terrestre</text></g></svg></div>
+    <p class="muted" style="font-size:14px;margin-top:6px">Schéma de l’appli, pour comprendre. Rien n’est à l’échelle.</p>`;
+}
+function asSvgScale() {
+  const it = [['Satellite', 'en orbite autour d’une planète', '#8a8f99'], ['Planète', 'en orbite autour du Soleil', '#3f8fd6'], ['Système solaire', 'une étoile, le Soleil, et ses corps célestes', '#c98a12'], ['Galaxie', 'un assemblage d’étoiles', '#7a4fd6'], ['Univers', 'l’ensemble de tout ce qui existe', '#1f2a5c']];
+  return `<div class="asscale">${it.map((x, i) => `<div style="--c:${x[2]};--w:${52 + i * 12}%"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div>`;
+}
+FICHES['as-systeme'] = { html: () => fSec('Le système solaire en un coup d’œil', asSvgSystem()) + asSec('À savoir : les définitions de tes notes', ['systeme', 'soleil', 'planete', 'satellite', 'orbite'])
+  + fSec('À savoir : les corps du système solaire', `<p class="asdef"><span class="tn">Tes notes</span> « À ce jour, ces corps sont : »</p><ul class="flist"><li>huit planètes et leurs satellites ; ${AS_LIST8}.</li><li>cinq planètes naines et leurs satellites ;</li><li>des astéroïdes et des comètes.</li></ul>`)
+  + fTrick('Pour ne pas mélanger : une <b>planète</b> tourne autour du <b>Soleil</b> ; un <b>satellite</b> tourne autour d’une <b>planète</b>. L’<b>orbite</b>, c’est le chemin courbe que chacun suit.') };
+FICHES['as-planetes'] = { html: () => asSec('À savoir : les deux familles de planètes', ['tellurique', 'gazeuse'])
+  + fSec('Les huit planètes, par famille', `<div class="two"><div><h4 class="pos">Telluriques</h4><div class="reveal-list">${AS_TELL.map(p => `<span style="background:${AS_PCOL[p.k]};color:#fff">${p.name}</span>`).join('')}</div></div><div><h4 class="neg">Gazeuses ou joviennes</h4><div class="reveal-list">${AS_GAZ.map(p => `<span style="background:${AS_PCOL[p.k]};color:#1d2330">${p.name}</span>`).join('')}</div></div></div>`)
+  + fTrick('<b>Tellurique</b> vient d’un mot qui veut dire « terre » : des planètes rocheuses comme la Terre. <b>Jovienne</b> vient de Jupiter : des planètes gazeuses comme Jupiter. Dans la liste de tes notes, les quatre premières sont telluriques et les quatre dernières sont gazeuses.') };
+FICHES['as-gravite'] = { html: () => asSec('À savoir : la définition de tes notes', ['gravite'])
+  + fSec('Pour comprendre', `<div class="kv"><div><b>La masse</b><span>Plus les corps sont massifs, plus ils s’attirent.</span></div><div><b>La distance</b><span>Plus les corps sont loin l’un de l’autre, moins ils s’attirent.</span></div><div><b>Les orbites</b><span>C’est la force gravitationnelle qui garde les planètes en orbite autour du Soleil, et la Lune en orbite autour de la Terre.</span></div></div><p class="muted" style="font-size:14px;margin-top:8px">Cette partie est une explication de l’appli. Tes notes disent : la force dépend de la masse des corps et de la distance entre eux.</p>`)
+  + fTrick('Deux mots à retenir : <b>masse</b> et <b>distance</b>. Ce sont les deux facteurs de tes notes.') };
+FICHES['as-petits'] = { html: () => fSec('L’histoire d’une étoile filante', asSvgFall()) + asSec('À savoir : les définitions de tes notes', ['comete', 'asteroide', 'meteore', 'meteorite', 'astrobleme']) + fSec('Les trois parties d’une comète', asSvgComet())
+  + fTrick('Trois mots qui se ressemblent : l’<b>astéroïde</b> est dans l’espace ; le <b>météore</b> est la lumière dans l’atmosphère (l’étoile filante) ; la <b>météorite</b> est la roche qui parvient au sol. Le cratère, c’est l’<b>astroblème</b>.') };
+FICHES['as-aurores'] = { html: () => fSec('Du Soleil à l’aurore polaire', asSvgAurora()) + asSec('À savoir : les définitions de tes notes', ['vent', 'aurore'])
+  + fTrick('<b>Boréale</b> = Nord, comme la forêt boréale, au nord du Québec. <b>Australe</b> = Sud, comme l’Australie. Et la haute atmosphère a un nom : la <b>thermosphère</b>.') };
+FICHES['as-recul'] = { html: () => asSec('À savoir : les définitions de tes notes', ['galaxie', 'univers']) + fSec('Prendre du recul : du plus petit au plus grand', asSvgScale())
+  + fTrick('Une <b>galaxie</b>, c’est un assemblage d’<b>étoiles</b>. L’<b>Univers</b>, c’est <b>tout</b> ce qui existe.') };
 
 /* =========================================================
    COURSE DES CARAVELLES — 2 à 4 joueurs sur un seul appareil,
@@ -3382,7 +3974,7 @@ function raceCfg() {
 /* ---------- Les questions de la course ----------
    La course pige dans la banque commune (quiz.js) : chaque entrée donne une question
    Matelot (choix de réponses) et, quand elle existe, une question Capitaine (à écrire). */
-function raceDeck() { return QBANK().map(e => lv => (lv === 'c' && e.c ? e.c : e.m)()); }
+function raceDeck() { return (CH().bank || QBANK)().map(e => lv => (lv === 'c' && e.c ? e.c : e.m)()); }
 
 /* ---------- La piste ---------- */
 function trackHTML(ps, len) {
@@ -3482,7 +4074,7 @@ function raceAsk() {
   } else {
     ans.innerHTML = `<div class="row"><input class="txt" id="rin" style="flex:1;min-width:190px" placeholder="${esc(Q.ph || 'Ta réponse')}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ${Q.num ? 'inputmode="numeric"' : ''} enterkeyhint="done"><button class="btn" id="rok">Valider</button></div><p class="muted" style="margin-top:6px;font-size:14px">Les petites fautes sont acceptées.</p>`;
     const inp = $('#rin', ans);
-    const sub = () => { if (answered) return; const v = inp.value; if (!v.trim()) { inp.focus(); return; } const m = matchAns(v, Q.a, Q.num); inp.disabled = true; inp.classList.add(m.ok ? 'ok' : 'ko'); done(m.ok); };
+    const sub = () => { if (answered) return; const v = inp.value; if (!v.trim()) { inp.focus(); return; } const m = matchAns(v, Q.a, Q.num, Q.strict); inp.disabled = true; inp.classList.add(m.ok ? 'ok' : 'ko'); done(m.ok); };
     $('#rok', ans).onclick = sub; inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); sub(); } });
     if (!Q.map) setTimeout(() => { if (inp.isConnected && !answered) inp.focus({ preventScroll: true }); }, 250);
   }
@@ -3573,7 +4165,7 @@ const pick = a => a[Math.floor(Math.random() * a.length)];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-const APP_VERSION = "2026-11-26T05:57";
+const APP_VERSION = "2026-11-26T21:01";
 let LITE = false; // mode léger : moins d'animations, pour que tout reste fluide sur un appareil lent
 
 /* ---------- État et sauvegarde (reste sur l'appareil) ---------- */
@@ -3582,6 +4174,9 @@ const CHAPTERS = {
   europe: { key: 'europe', level: 1, levelName: 'Matelot', levelSub: 'Je reconnais : choix de réponses', reward: 'drops', race: true, subject: 'Histoire', title: 'L’expansion européenne dans le monde', date: '2026-11-27', quests: QUESTS_EU, items: ITEMS_EU, build: buildQuestEU, exam: buildExamEU, icon: 'boat', nq: 14, fiches: true, trail: 'Des caravelles du 15e siècle jusqu’au monde d’aujourd’hui.' },
   europe2: { key: 'europe2', base: 'europe', level: 2, levelName: 'Capitaine', levelSub: 'J’écris les mots clés', reward: 'pencils', race: true, subject: 'Histoire', title: 'L’expansion européenne dans le monde', date: '2026-11-27', quests: QUESTS_EU2, items: ITEMS_EU2, build: buildQuestEU2, exam: buildExamEU2, icon: 'boat', nq: 14, fiches: true, trail: 'Niveau 2 : tu écris tes réponses, sans choix et sans indice, comme à l’examen.' },
   europe3: { key: 'europe3', base: 'europe', level: 3, levelName: 'Amiral', levelSub: 'De mémoire : la réponse au complet', reward: 'picks', race: true, subject: 'Histoire', title: 'L’expansion européenne dans le monde', date: '2026-11-27', quests: QUESTS_EU3, items: ITEMS_EU3, build: buildQuestEU3, exam: buildExamEU3, icon: 'boat', nq: 14, fiches: true, trail: 'Niveau 3 : tu rédiges la réponse au complet, de mémoire, comme sur ta copie.' },
+  astro: { key: 'astro', level: 1, levelName: 'Observatrice', levelSub: 'Je reconnais : choix de réponses', reward: 'drops', subject: 'Science', title: 'L’astronomie', date: '2026-11-30', quests: QUESTS_AS, items: ITEMS_AS, exam: buildExamAS(1), icon: 'saturne', fiches: true, bank: ABANK, lv: asLv, model3d: 'astronomie-3d.html', examSub: 'Toutes les notions de tes notes de cours', examBy: 'Par thème', trail: 'Du Soleil jusqu’au bout de l’Univers, avec les mots exacts de tes notes de cours.' },
+  astro2: { key: 'astro2', base: 'astro', level: 2, levelName: 'Astronome', levelSub: 'J’écris les mots de mes notes', reward: 'pencils', subject: 'Science', title: 'L’astronomie', date: '2026-11-30', quests: QUESTS_AS2, items: ITEMS_AS2, exam: buildExamAS(2), icon: 'saturne', fiches: true, bank: ABANK, lv: asLv, model3d: 'astronomie-3d.html', examSub: 'Toutes les notions, à écrire', examBy: 'Par thème', trail: 'Niveau 2 : tu écris les mots exacts de tes notes, sans choix de réponses.' },
+  astro3: { key: 'astro3', base: 'astro', level: 3, levelName: 'Astronaute', levelSub: 'De mémoire : la définition au complet', reward: 'picks', subject: 'Science', title: 'L’astronomie', date: '2026-11-30', quests: QUESTS_AS3, items: ITEMS_AS3, exam: buildExamAS(3), icon: 'saturne', fiches: true, bank: ABANK, lv: asLv, model3d: 'astronomie-3d.html', examSub: 'Toutes les notions, à rédiger de mémoire', examBy: 'Par thème', trail: 'Niveau 3 : tu rédiges les définitions de mémoire et tu expliques.' },
   foret: { key: 'foret', subject: 'Géographie', title: 'Le territoire forestier', date: '2026-11-10', quests: QUESTS, items: ITEMS, build: buildQuest, exam: buildExam, icon: 'tree', nq: 11, trail: 'Du Grand Nord québécois jusqu’au cœur de l’Amazonie.' }
 };
 const ALL_QUESTS = Object.values(CHAPTERS).flatMap(c => c.quests);
@@ -3589,7 +4184,7 @@ const ALL_ITEMS = Object.values(CHAPTERS).flatMap(c => c.items);
 const CH = () => CHAPTERS[S.chapter] || CHAPTERS.europe;
 const baseKey = () => CH().base || CH().key;
 const exDate = () => (S.examDates && S.examDates[baseKey()]) || CH().date;
-const buildAny = (key, focus) => key.startsWith('e3-') ? buildQuestEU3(key, focus) : key.startsWith('e2-') ? buildQuestEU2(key, focus) : key.startsWith('eu-') ? buildQuestEU(key, focus) : buildQuest(key, focus);
+const buildAny = (key, focus) => /^a[s23]-/.test(key) ? buildQuestAS(key, focus) : key.startsWith('e3-') ? buildQuestEU3(key, focus) : key.startsWith('e2-') ? buildQuestEU2(key, focus) : key.startsWith('eu-') ? buildQuestEU(key, focus) : buildQuest(key, focus);
 const DEFAULT_STATE = () => ({ v: 1, chapter: 'europe', examDates: {}, seenChapters: ['europe'], onboarded: false, name: '', theme: 'briques', comp: 'renard', compName: '', sound: true, vibrate: true, examDate: EXAM_DATE_DEFAULT, items: {}, seeds: 3, forest: [], sessions: {}, exams: [], lastSeed: {}, acc: ['bois'], wear: { hat: '', aura: '', glasses: '', bat: 'bois' }, look: {}, badges: [], newBadges: [], anim: 'auto', seenFiche: {} });
 let S = load(); normalize();
 function normalize() { S.examDates = S.examDates || {}; if (!S.chapter) S.chapter = 'europe'; if (!S.seenChapters) S.seenChapters = S.onboarded ? ['foret'] : ['europe']; S.wear = Object.assign({ hat: '', aura: '', glasses: '', bat: 'bois' }, S.wear || {}); S.acc = S.acc || []; if (!S.acc.includes('bois')) S.acc.push('bois'); S.look = S.look || {}; S.seenFiche = S.seenFiche || {}; if (!S.anim) S.anim = 'auto';
@@ -3703,7 +4298,11 @@ function newPart(init) {
 }
 const PERF = { n: 0, t0: 0, last: 0, bad: 0 };
 function perfWatch(ts) { // si l'appareil n'arrive pas à suivre, on passe tout seul en mode léger
-  if (ts - PERF.last > 250) { PERF.t0 = ts; PERF.n = 0; } PERF.last = ts; PERF.n++;
+  // un trou de plus d'un quart de seconde : une pause (onglet caché, autre appli)… ou un appareil qui n'arrive plus du tout à suivre.
+  // Huit trous de suite, ce n'est plus une pause : on passe en mode léger.
+  if (ts - PERF.last > 250) { PERF.t0 = ts; PERF.n = 0; PERF.slow = (PERF.slow || 0) + 1; } else PERF.slow = 0;
+  PERF.last = ts; PERF.n++;
+  if (PERF.slow >= 8 && ts > 6000 && !LITE && S.anim === 'auto') { PERF.slow = 0; S.autoLite = today() + 7; save(); applyPerf(); return; }
   if (ts - PERF.t0 < 1000) return;
   const fps = PERF.n * 1000 / (ts - PERF.t0); PERF.t0 = ts; PERF.n = 0;
   if (ts < 6000 || LITE || S.anim !== 'auto') return;
@@ -3718,7 +4317,7 @@ function applyPerf() {
 function loop(ts) {
   const c = BG.ctx, w = BG.w, h = BG.h; BG.t = ts / 1000; BG.f = (BG.f || 0) + 1;
   if (!document.hidden) perfWatch(ts);
-  if (!document.hidden && BG.f % 2 === 0) {
+  if (!document.hidden && !PAUSED && BG.f % 2 === 0) {
     if (BG.parts.length || BG.mode === 'aurora') {
     c.clearRect(0, 0, w, h);
     if (BG.mode === 'aurora' && !LITE) drawAurora(c, w, h, BG.t);
@@ -3816,8 +4415,8 @@ function showCrash(e) {
     $('#h', n).onclick = () => { busy = false; go(screenHome); };
   } catch (x) { }
 }
-function mount(html) { AT_HOME = false; $$('.overlay').forEach(x => x.remove()); document.body.classList.remove('mapfull'); if (RC && RC.tick) clearInterval(RC.tick); try { seqStop(); if (CARNET_STORE) { const f = CARNET_STORE; CARNET_STORE = null; f(); } } catch (e) { } const app = $('#app'); app.innerHTML = ''; const node = typeof html === 'string' ? el(html) : html; app.appendChild(node); return node; }
-function applyTheme() { document.body.className = 't-' + S.theme + ' ch-' + (CHAPTERS[S.chapter] ? S.chapter : 'europe') + (LITE ? ' lite' : ''); const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = { blocs: '#3d5a2a', aurore: '#081430', jungle: '#0f3b25', briques: '#2a9a52', grunge: '#1f1d1b' }[S.theme]; }
+function mount(html) { AT_HOME = false; $$('.overlay').forEach(x => x.remove()); document.body.classList.remove('mapfull'); close3D(); if (RC && RC.tick) clearInterval(RC.tick); try { seqStop(); if (CARNET_STORE) { const f = CARNET_STORE; CARNET_STORE = null; f(); } } catch (e) { } const app = $('#app'); app.innerHTML = ''; const node = typeof html === 'string' ? el(html) : html; app.appendChild(node); return node; }
+function applyTheme() { document.body.className = 't-' + S.theme + ' ch-' + (CHAPTERS[S.chapter] ? S.chapter : 'europe') + ' chb-' + baseKey() + (LITE ? ' lite' : ''); const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = { blocs: '#3d5a2a', aurore: '#081430', jungle: '#0f3b25', briques: '#2a9a52', grunge: '#1f1d1b' }[S.theme]; }
 
 /* ---------- Compagnon ---------- */
 const compName = () => S.compName || COMPANIONS[S.comp].name;
@@ -3906,6 +4505,12 @@ function levelSwitch(C) { // choix du niveau, pour les matières qui en ont plus
 }
 const levelsOf = C => Object.values(CHAPTERS).filter(c => (c.base || c.key) === (C.base || C.key) && c.level).sort((a, b) => a.level - b.level);
 function bannerArt(k) { // petite illustration de la matière (dessin fixe, aucun calcul pendant l'affichage)
+  if (k.indexOf('astro') === 0) return `<svg class="bn-svg" viewBox="0 0 220 120" aria-hidden="true"><g fill="#fff">${Array.from({ length: 22 }, (_, i) => `<circle cx="${(i * 67) % 220}" cy="${(i * 41) % 120}" r="${i % 3 ? 1 : 1.7}" opacity="${i % 2 ? .9 : .55}"/>`).join('')}</g>
+    <circle cx="26" cy="96" r="44" fill="#f2b705"/><circle cx="26" cy="96" r="52" fill="none" stroke="#f2b705" stroke-opacity=".35" stroke-width="5"/>
+    <ellipse cx="26" cy="96" rx="96" ry="62" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.4" stroke-dasharray="3 6"/><ellipse cx="26" cy="96" rx="150" ry="92" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.4" stroke-dasharray="3 6"/>
+    <circle cx="108" cy="62" r="8" fill="#3f8fd6"/><path d="M103 60q4 -5 9 0q2 5 -4 6q-5 0 -5 -6Z" fill="#3fa34d"/><circle cx="121" cy="54" r="2.6" fill="#c9cfe0"/>
+    <ellipse cx="166" cy="36" rx="26" ry="6" fill="none" stroke="#f1e2a8" stroke-width="3" transform="rotate(-18 166 36)"/><circle cx="166" cy="36" r="14" fill="#e3c77a"/>
+    <path d="M150 104L196 86" stroke="#9fe8ff" stroke-width="4" stroke-linecap="round" opacity=".7"/><circle cx="150" cy="104" r="4" fill="#fff"/></svg>`;
   if (k === 'foret') return `<div class="bn-art">${icon('tree', 54)}${icon('leaf', 40)}${icon('tree', 46)}</div>`;
   return `<svg class="bn-svg" viewBox="0 0 220 120" aria-hidden="true"><path d="M8 86 C48 20 120 96 208 30" fill="none" stroke="#7a5c33" stroke-width="2.2" stroke-dasharray="2 7" stroke-linecap="round"/>
     <g transform="translate(176 84)" opacity=".9"><circle r="22" fill="rgba(251,244,226,.6)" stroke="#7a5c33" stroke-width="1.4"/><path d="M-27 0L0 -3.4L27 0L0 3.4Z" fill="#b08d57"/><path d="M0 -29L3.6 0L0 29L-3.6 0Z" fill="#7a5c33"/><path d="M0 -29L3.6 0L0 0Z" fill="#c0392b"/></g>
@@ -3916,6 +4521,10 @@ function screenHome() {
   setBiome('default');
   const C = CH(), R = RW(), d = daysLeft(), pct = masteryPct(), due = dueCount(), nM = C.items.filter(i => mastered(i.id)).length;
   const nextLv = C.level ? levelsOf(C).find(c => c.level === C.level + 1) : null;
+  // une matière ajoutée depuis la dernière visite : on l'annonce une fois (sauf pendant qu'on est déjà dedans)
+  const newSub = Object.values(CHAPTERS).find(c => !c.base && c.announce !== false && c.key === 'astro' && !S.seenChapters.includes(c.key) && baseKey() !== c.key) || null;
+  if (!S.seenChapters.includes(baseKey())) { S.seenChapters.push(baseKey()); save(); }
+  const has3d = !!(C.model3d && MODEL3D.ok);
   const days = []; const t = today(), ex = dayNum(exDate());
   const end = ex >= t ? Math.min(ex, t + 12) : t;
   for (let num = t - 1; num <= end; num++) {
@@ -3928,11 +4537,12 @@ function screenHome() {
   const msg = d > 1 ? `Il reste ${d} jours avant l’examen. Un peu chaque jour, et tu seras prête.` : d === 1 ? 'L’examen, c’est demain. Une séance légère, un coup d’œil aux fiches, puis dodo.' : d === 0 ? 'C’est le jour J. Tu es prête.' : 'L’examen est passé. Tu peux encore jouer.';
   const fresh = startedPct() === 0;
   const n = mount(`<div class="screen fadein home">
-    <div class="banner b-${C.key}">${bannerArt(C.key)}
+    <div class="banner b-${C.key} bb-${C.base || C.key}">${bannerArt(C.key)}
       <div class="grow bn-txt"><span class="subj">${C.subject}</span><h2 class="bn-title">${C.title}</h2><p>Examen : <b>${longDate(exDate())}</b> · ${when}</p></div>
       <button class="btn alt sm" id="b-chap">Changer de matière</button>${levelSwitch(C)}</div>
-    ${C.level && !S.seenNew2 ? `<div class="panel newbox"><div class="row"><span class="pship">${shipSVG(RACE_COL[1], 64)}</span><div class="grow"><h3>Nouveau</h3><p style="margin-top:4px"><b>Trois niveaux</b>, de plus en plus difficiles. À chaque niveau, une récompense différente : une <b>toile à peindre</b>, un <b>carnet de dessin</b>, puis un <b>garage</b> pour composer ta musique.</p><p style="margin-top:6px">Les questions changent de forme d’une fois à l’autre, et l’appli explique chaque réponse dans d’autres mots. Il y a aussi la <b>course en famille</b>.</p></div></div><div class="row" style="margin-top:12px"><button class="btn" id="n2">Essayer le niveau 2</button><button class="btn alt" id="nr">Voir la course</button><span class="grow"></span><button class="btn ghost sm" id="nx">Plus tard</button></div></div>` : ''}
+    ${(C.base || C.key) === 'europe' && !S.seenNew2 ? `<div class="panel newbox"><div class="row"><span class="pship">${shipSVG(RACE_COL[1], 64)}</span><div class="grow"><h3>Nouveau</h3><p style="margin-top:4px"><b>Trois niveaux</b>, de plus en plus difficiles. À chaque niveau, une récompense différente : une <b>toile à peindre</b>, un <b>carnet de dessin</b>, puis un <b>garage</b> pour composer ta musique.</p><p style="margin-top:6px">Les questions changent de forme d’une fois à l’autre, et l’appli explique chaque réponse dans d’autres mots. Il y a aussi la <b>course en famille</b>.</p></div></div><div class="row" style="margin-top:12px"><button class="btn" id="n2">Essayer le niveau 2</button><button class="btn alt" id="nr">Voir la course</button><span class="grow"></span><button class="btn ghost sm" id="nx">Plus tard</button></div></div>` : ''}
     ${nextLv && S.seenNew2 && pct >= 80 ? `<div class="fact row"><span class="grow">Niveau ${C.level} maîtrisé à ${pct} %. Passe au <b>niveau ${nextLv.level} · ${nextLv.levelName}</b> : c’est plus difficile, et une nouvelle récompense t’attend.</span><button class="btn sm" id="n2b">Niveau ${nextLv.level}</button></div>` : ''}
+    ${newSub ? `<div class="panel newbox nsub"><div class="row"><span class="pship">${icon(newSub.icon, 56)}</span><div class="grow"><h3>Nouvelle matière : ${newSub.subject}</h3><p style="margin-top:4px"><b>${newSub.title}</b>. Examen : ${longDate((S.examDates[newSub.key]) || newSub.date)}. Trois niveaux, des fiches de révision et les mots exacts de tes notes de cours.</p></div></div><div class="row" style="margin-top:12px"><button class="btn" id="ns-go">Voir la ${newSub.subject.toLowerCase()}</button><span class="grow"></span><button class="btn ghost sm" id="ns-no">Plus tard</button></div></div>` : ''}
     <div class="panel hero">${compSVG(76)}<div class="grow"><h2>Salut ${esc(S.name)} !</h2><p class="muted">${msg}</p></div>
       <div class="ring" style="--p:${pct}"><span>${pct}%</span></div></div>
     <button class="btn big cta" id="b-session">${icon('star', 40)}<span>Séance du jour<small>${due ? `Un mélange de tous les sujets · environ 10 minutes · ${due} élément${due > 1 ? 's' : ''} à voir` : 'Tout est à jour pour aujourd’hui'}</small></span></button>
@@ -3940,7 +4550,8 @@ function screenHome() {
     <div class="menu">
       ${C.fiches ? `<button class="btn big alt" id="b-fiches">${icon('portulan', 34)}<span>Fiches de révision<small>Tout ce qu’il faut savoir, en ${C.quests.length} fiches</small></span></button>` : ''}
       <button class="btn big alt" id="b-map">${icon('map', 34)}<span>Par sujet<small>Choisis ce que tu veux pratiquer</small></span></button>
-      <button class="btn big alt" id="b-exam">${icon('lab', 34)}<span>Examen blanc<small>${C.level === 3 ? `Les ${C.nq} questions, à rédiger de mémoire` : C.level === 2 ? `Les ${C.nq} questions, tout à écrire` : `Les ${C.nq} questions du document d’étude`}</small></span></button>
+      <button class="btn big alt" id="b-exam">${icon('lab', 34)}<span>Examen blanc<small>${C.examSub || (C.level === 3 ? `Les ${C.nq} questions, à rédiger de mémoire` : C.level === 2 ? `Les ${C.nq} questions, tout à écrire` : `Les ${C.nq} questions du document d’étude`)}</small></span></button>
+      ${has3d ? `<button class="btn big alt b3d" id="b-3d">${icon('fusee', 34)}<span>Voir en 3D<small>${sub3D()}</small></span></button>` : ''}
       ${C.race ? `<button class="btn big alt" id="b-race">${shipSVG(RACE_COL[0], 40)}<span>Course en famille<small>2 à 4 joueurs, chacun son tour</small></span></button>` : ''}
     </div>
     <div class="row"><span class="chip">${icon('star', 20)} ${nM}/${C.items.length} maîtrisés</span><span class="chip">${C.items.filter(i => st(i.id).ok > 0).length}/${C.items.length} réussis une fois</span><span class="chip">${icon(R.icon, 20)} ${units(wal())}</span>${R.key === 'seeds' ? `<span class="chip">${icon('tree', 20)} ${S.forest.length} arbre${S.forest.length > 1 ? 's' : ''}</span>` : ''}</div>
@@ -3949,7 +4560,7 @@ function screenHome() {
       <button class="btn alt" id="b-shop">${icon('star', 30)}<span>Boutique<small>Habille ${esc(compName())}</small></span></button>
     </div>
     <div class="panel"><h3>Mon plan jusqu’à l’examen</h3><div class="days" style="margin-top:10px">${days.join('')}</div></div>
-    <details class="panel fold"><summary><h3>Mes badges · ${S.badges.length}/${BADGES.length}</h3></summary><div class="badges" style="margin-top:10px">${BADGES.map(b => `<div class="bdg ${S.badges.includes(b.id) ? '' : 'off'} ${(S.newBadges || []).includes(b.id) ? 'new' : ''}">${icon(b.icon, 36)}${esc(b.name)}</div>`).join('')}</div></details>
+    <details class="panel fold"><summary><h3>Mes badges · ${myBadges().filter(b => S.badges.includes(b.id)).length}/${myBadges().length}</h3></summary><div class="badges" style="margin-top:10px">${myBadges().map(b => `<div class="bdg ${S.badges.includes(b.id) ? '' : 'off'} ${(S.newBadges || []).includes(b.id) ? 'new' : ''}">${icon(b.icon, 36)}${esc(b.name)}</div>`).join('')}</div></details>
     <div class="row"><span class="muted ver">${verLabel()}</span><span class="grow"></span><button class="btn ghost" id="b-set">Réglages</button></div></div>`);
   $('#b-session', n).onclick = () => { sfx('tap'); startSession(); };
   $('#b-map', n).onclick = () => { sfx('tap'); go(screenMap); };
@@ -3958,6 +4569,8 @@ function screenHome() {
   $('#b-exam', n).onclick = () => { sfx('tap'); startExam(); };
   $('#b-shop', n).onclick = () => { sfx('tap'); go(screenShop); };
   $('#b-chap', n).onclick = () => { sfx('tap'); go(screenChapters); };
+  if ($('#b-3d', n)) $('#b-3d', n).onclick = () => { sfx('tap'); open3D(); };
+  if ($('#ns-go', n)) { $('#ns-go', n).onclick = () => { S.chapter = newSub.key; if (!S.seenChapters.includes(newSub.key)) S.seenChapters.push(newSub.key); save(); applyTheme(); sfx('good'); go(screenHome); }; $('#ns-no', n).onclick = () => { S.seenChapters.push(newSub.key); save(); sfx('tap'); $('.nsub', n).remove(); }; }
   const toLevel = k => { S.chapter = k; S.seenNew2 = true; save(); applyTheme(); sfx('good'); go(screenHome); };
   $$('.lvl', n).forEach(b => b.onclick = () => { if (b.dataset.l !== S.chapter) toLevel(b.dataset.l); });
   if ($('#b-race', n)) $('#b-race', n).onclick = () => { sfx('tap'); go(screenRaceSetup); };
@@ -3975,7 +4588,7 @@ function screenMap() {
   const n = mount(`<div class="screen fadein">
     <div class="topbar"><button class="btn alt" id="bk">Retour</button><h2 class="grow">Par sujet</h2><span class="subj">${C.subject}</span></div>
     <p class="muted">${C.trail} Commence où tu veux.</p>
-    <div class="trail">${C.quests.map((q, i) => { const p = masteryPct(q.key), [lab, cls] = questStatus(q.key); return `<div class="panel node" data-k="${q.key}"><div class="badge">${icon(q.icon, 40)}</div><div class="grow"><h3>${i + 1}. ${q.title}</h3><p class="muted" style="font-size:15px">${q.sub}</p><p class="muted" style="font-size:14px"><b>${q.q}</b> du document d’étude${q.pages ? ' · cahier ' + q.pages : ''}</p><div class="mini"><div style="width:${p}%"></div></div><div class="row" style="margin-top:8px"><span class="chip st-${cls}">${lab}</span><span class="grow"></span>${C.fiches ? `<button class="btn alt sm" data-f="${q.key}">Fiche</button>` : ''}<button class="btn sm" data-p="${q.key}">Jouer</button></div></div></div>`; }).join('')}</div></div>`);
+    <div class="trail">${C.quests.map((q, i) => { const p = masteryPct(q.key), [lab, cls] = questStatus(q.key); return `<div class="panel node" data-k="${q.key}"><div class="badge">${icon(q.icon, 40)}</div><div class="grow"><h3>${i + 1}. ${q.title}</h3><p class="muted" style="font-size:15px">${q.sub}</p><p class="muted" style="font-size:14px">${q.ref ? `<b>${q.ref}</b>` : `<b>${q.q}</b> du document d’étude${q.pages ? ' · cahier ' + q.pages : ''}`}</p><div class="mini"><div style="width:${p}%"></div></div><div class="row" style="margin-top:8px"><span class="chip st-${cls}">${lab}</span><span class="grow"></span>${C.fiches ? `<button class="btn alt sm" data-f="${q.key}">Fiche</button>` : ''}<button class="btn sm" data-p="${q.key}">Jouer</button></div></div></div>`; }).join('')}</div></div>`);
   $('#bk', n).onclick = () => go(screenHome);
   $$('[data-f]', n).forEach(b => b.onclick = e => { e.stopPropagation(); sfx('tap'); go(() => screenFiche(b.dataset.f, screenMap)); });
   $$('.node', n).forEach(nd => nd.onclick = () => { sfx('tap'); startQuest(nd.dataset.k); });
@@ -4168,13 +4781,22 @@ function showFeedback(ok, info, gained, next) {
     ${gained ? `<p class="muted" style="font-size:15px;margin-top:4px">+${units(gained)} ${RW().pour}</p>` : ''}</div>
     <button class="btn" id="cont">Continuer</button></div></div>`);
   document.body.appendChild(fb);
-  requestAnimationFrame(() => requestAnimationFrame(() => fb.classList.add('show')));
+  // le panneau de correction est fixé en bas : on laisse la place dessous pour que tout le contenu reste atteignable,
+  // et si une explication se retrouve cachée de peu, on la remonte doucement
+  const scr = $('#app .screen');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    fb.classList.add('show');
+    if (!scr) return; const h = fb.offsetHeight; scr.style.paddingBottom = (h + 8) + 'px';
+    const st = $('#stage', scr), last = st && st.lastElementChild, app = $('#app');
+    if (last && app) { const over = last.getBoundingClientRect().bottom - (innerHeight - h) + 8; if (over > 0 && over <= 260) app.scrollBy({ top: over, behavior: 'smooth' }); }
+  }));
   if (ok && !info.serious) burst(innerWidth / 2, innerHeight - 120, 22);
   let used = false;
-  const go2 = () => { if (used) return; used = true; sfx('tap'); fb.classList.remove('show'); setTimeout(() => fb.remove(), 350); next(); };
+  const go2 = () => { if (used) return; used = true; sfx('tap'); fb.classList.remove('show'); setTimeout(() => fb.remove(), 350); if (scr) scr.style.paddingBottom = ''; next(); };
   $('#cont', fb).onclick = go2;
   $('#cont', fb).focus({ preventScroll: true });
 }
+const qNum = k => +((String(k).match(/\d+/) || [0])[0]); // « Q10 » ou « Thème 3 » : le numéro, pour trier
 function finishRun(run, quit) {
   if (run.scene) run.scene.stop();
   const total = run.results.length, good = run.results.filter(r => r.ok).length;
@@ -4188,7 +4810,7 @@ function finishRun(run, quit) {
     run.results.forEach(r => { const k = r.q || '?'; byQ[k] = byQ[k] || [0, 0]; byQ[k][1]++; if (r.ok) byQ[k][0]++; });
     const weak = Object.entries(byQ).filter(([, v]) => v[0] < v[1]).map(([k]) => k);
     examBlock = `<div class="panel center"><div class="score">${score} %</div><p class="muted">Résultat de l’examen blanc</p></div>
-      <div class="panel"><h3>Par question du document d’étude</h3><div class="reveal-list" style="margin-top:10px">${Object.entries(byQ).sort((a, b) => parseInt(a[0].slice(1)) - parseInt(b[0].slice(1))).map(([k, v]) => `<span class="${v[0] === v[1] ? 'got' : ''}">${k} : ${v[0]}/${v[1]}</span>`).join('')}</div>
+      <div class="panel"><h3>${CH().examBy || 'Par question du document d’étude'}</h3><div class="reveal-list" style="margin-top:10px">${Object.entries(byQ).sort((a, b) => qNum(a[0]) - qNum(b[0])).map(([k, v]) => `<span class="${v[0] === v[1] ? 'got' : ''}">${k} : ${v[0]}/${v[1]}</span>`).join('')}</div>
       ${weak.length ? `<p style="margin-top:10px">À revoir : <b>${weak.join(', ')}</b>. La séance du jour va te les ramener.</p>` : '<p style="margin-top:10px"><b>Tout est réussi.</b></p>'}</div>`;
   }
   save();
@@ -4202,7 +4824,7 @@ function finishRun(run, quit) {
       <div class="panel hero">${compSVG(90, 'hop')}<div class="grow"><h2>${quit ? 'Pause bien méritée' : run.opt.mode === 'session' ? 'Séance terminée' : run.opt.mode === 'exam' ? 'Examen blanc terminé' : 'Sujet terminé'}</h2><p>${esc(compName())} : « ${total ? `${good} bonne${good > 1 ? 's' : ''} réponse${good > 1 ? 's' : ''} sur ${total}.` : 'À la prochaine !'} ${good === total && total ? 'Impressionnant, ' + esc(S.name) + '.' : 'Chaque erreur d’aujourd’hui, c’est une réponse que tu vas retenir.'} »</p></div></div>
       ${examBlock}
       ${missed.length ? `<div class="panel"><h3>À revoir</h3><div class="reveal-list" style="margin-top:10px">${missed.slice(0, 8).map(i => `<span>${esc(i.label)}</span>`).join('')}${missed.length > 8 ? `<span>et ${missed.length - 8} de plus</span>` : ''}</div>${mq.length ? `<div class="row" style="margin-top:12px">${mq.slice(0, 3).map(k => `<button class="btn alt sm" data-f="${k}">Fiche : ${esc(ALL_QUESTS.find(q => q.key === k).title)}</button>`).join('')}</div>` : ''}</div>` : ''}
-      ${nb.length ? `<div class="panel"><h3>Nouveau badge${nb.length > 1 ? 's' : ''}</h3><div class="badges" style="margin-top:10px">${nb.map(b => `<div class="bdg new">${icon(b.icon, 40)}${esc(b.name)}</div>`).join('')}</div></div>` : ''}
+      ${nb.length ? `<div class="panel"><h3>${nb.length > 1 ? 'Nouveaux badges' : 'Nouveau badge'}</h3><div class="badges" style="margin-top:10px">${nb.map(b => `<div class="bdg new">${icon(b.icon, 40)}${esc(b.name)}</div>`).join('')}</div></div>` : ''}
       ${run.seeds ? `<div class="panel row">${icon(RW().icon, 40)}<p class="grow"><b>+${units(run.seeds)}</b> ${RW().pour}.</p><button class="btn alt" id="pl">${RW().act}</button></div>` : ''}
       ${left ? `<button class="btn big" id="again">${icon('star', 34)}<span>Encore une séance<small>Il reste ${left} élément${left > 1 ? 's' : ''} à voir aujourd’hui</small></span></button>` : run.opt.mode === 'session' && total ? '<div class="fact">Tout est vu pour aujourd’hui. Reviens demain : c’est en espaçant les séances qu’on retient le mieux.</div>' : ''}
       <div class="row"><button class="btn alt" id="hm">Accueil</button><span class="grow"></span><button class="btn alt" id="mp">Par sujet</button></div></div>`);
@@ -4221,7 +4843,7 @@ function screenFiches() {
   setBiome('default'); const C = CH();
   const n = mount(`<div class="screen fadein">
     <div class="topbar"><button class="btn alt" id="bk">Retour</button><h2 class="grow">Fiches de révision</h2><span class="subj">${C.subject}</span></div>
-    <p class="muted">Tout ce qu’il faut savoir pour l’examen, question par question. Lis une fiche, puis teste-toi.</p>
+    <p class="muted">Tout ce qu’il faut savoir pour l’examen, ${C.examSub ? 'sujet par sujet' : 'question par question'}. Lis une fiche, puis teste-toi.</p>
     <div class="fgrid">${C.quests.filter(q => hasFiche(q.key)).map((q, i) => { const [lab, cls] = questStatus(q.key); return `<button class="panel fcard" data-k="${q.key}">${icon(q.icon, 44)}<b>${i + 1}. ${q.title}</b><span class="muted">${q.q}</span><span class="chip st-${cls}">${lab}</span></button>`; }).join('')}</div></div>`);
   $('#bk', n).onclick = () => go(screenHome);
   $$('.fcard', n).forEach(b => b.onclick = () => { sfx('tap'); go(() => screenFiche(b.dataset.k, screenFiches)); });
@@ -4232,6 +4854,7 @@ function screenFiche(key, back, first) {
   const n = mount(`<div class="screen fadein wide">
     <div class="topbar"><button class="btn alt" id="bk">Retour</button><h2 class="grow">Fiche ${i + 1} sur ${qs.length}</h2><span class="subj">${C.subject}</span></div>
     <div class="fbody"></div>
+    ${C.model3d && MODEL3D.ok ? `<button class="btn big alt b3d" id="f3d">${icon('fusee', 34)}<span>${MODEL3D.vivant ? 'Allume ces définitions en 3D' : 'Voir en 3D'}<small>${MODEL3D.vivant ? 'Chaque bout de la définition s’allume quand tu le fais arriver' : 'Regarde ce que tu viens de lire, en trois dimensions'}</small></span></button>` : ''}
     <button class="btn big" id="play">${icon('star', 34)}<span>${first ? 'J’ai lu, on joue' : 'Me tester sur ce sujet'}</span></button>
     <div class="row"><button class="btn alt" id="pv" ${i > 0 ? '' : 'disabled'}>Fiche précédente</button><span class="grow"></span><button class="btn alt" id="nx" ${i < qs.length - 1 ? '' : 'disabled'}>Fiche suivante</button></div></div>`);
   fillFiche($('.fbody', n), key);
@@ -4239,6 +4862,7 @@ function screenFiche(key, back, first) {
   $('#pv', n).onclick = () => go(() => screenFiche(qs[i - 1].key, back));
   $('#nx', n).onclick = () => go(() => screenFiche(qs[i + 1].key, back));
   $('#play', n).onclick = () => { sfx('tap'); startQuest(key, true); };
+  if ($('#f3d', n)) $('#f3d', n).onclick = () => { sfx('tap'); open3D((ALL_QUESTS.find(x => x.key === key) || {}).a3d); };
 }
 // La fiche par-dessus une question, pendant le jeu
 function openFiche(key) {
@@ -4334,7 +4958,9 @@ function screenForest() {
 /* =========================================================
    BADGES
    ========================================================= */
-const BADGES = ALL_QUESTS.map(q => ({ id: 'q-' + q.key, name: q.title, icon: q.icon, ok: () => masteryPct(q.key) === 100 })).concat([
+const questBase = k => { const c = Object.values(CHAPTERS).find(c => c.quests.some(q => q.key === k)); return c ? (c.base || c.key) : ''; };
+const myBadges = () => BADGES.filter(b => !b.base || b.base === baseKey()); // on montre les badges de la matière en cours et les badges généraux
+const BADGES = ALL_QUESTS.map(q => ({ id: 'q-' + q.key, base: questBase(q.key), name: q.title, icon: q.icon, ok: () => masteryPct(q.key) === 100 })).concat([
   { id: 'premiere', name: 'Première séance', icon: 'star', ok: () => Object.keys(S.sessions).length >= 1 },
   { id: 'trois-jours', name: '3 jours d’étude', icon: 'seed', ok: () => Object.keys(S.sessions).length >= 3 },
   { id: 'jardin', name: 'Jardinière : 10 arbres', icon: 'tree', ok: () => S.forest.length >= 10 },
@@ -4419,6 +5045,56 @@ function screenNewChapter() {
   $('#go', n).onclick = () => { sfx('win'); confetti(); go(screenHome); };
 }
 
+/* ---------- Modèle 3D ----------
+   Le modèle est un fichier à part, publié à côté de l'appli. Le bouton « Voir en 3D » n'apparaît
+   que si ce fichier est bien là. On l'ouvre dans un cadre plein écran, avec un bouton pour revenir. */
+const MODEL3D = { ok: false, url: 'astronomie-3d.html', vivant: (true) === true }; // vivant : le modèle fait « allumer » les définitions
+let PAUSED = false; // pendant que le modèle 3D est ouvert, l'appli met ses propres animations en pause
+async function check3D() {
+  if (window.__model3d) { MODEL3D.ok = true; MODEL3D.url = window.__model3d; document.body.classList.add('has3d'); return; }
+  if (!HOSTED) return;
+  let ok = false;
+  try { const r = await fetch(MODEL3D.url, { method: 'HEAD' }); ok = !!(r && r.ok); }
+  catch (e) { try { ok = !!(window.caches && await caches.match(MODEL3D.url, { ignoreSearch: true })); } catch (x) { } } // sans Internet : la copie gardée par l'appli suffit
+  const was = MODEL3D.ok; MODEL3D.ok = ok; document.body.classList.toggle('has3d', ok); if (ok && !was && AT_HOME && CH().model3d) screenHome();
+}
+function open3D(anchor) {
+  if (!MODEL3D.ok || $('.o3d')) return;
+  const ov = el(`<div class="overlay o3d"><div class="o3dbar"><button class="btn" id="x3">Revenir à l’appli</button><span class="grow o3dt">Modèle 3D · tourne, zoome, touche les objets</span></div><iframe title="Modèle 3D d’astronomie" src="${esc(MODEL3D.url)}${anchor ? '#' + encodeURIComponent(anchor) : ''}" allow="fullscreen"></iframe></div>`);
+  document.body.appendChild(ov); PAUSED = true;
+  $('#x3', ov).onclick = () => { sfx('tap'); close3D(); };
+}
+// Le petit texte sous « Voir en 3D », à l'accueil : le progrès dans le modèle, s'il y en a
+function sub3D() {
+  const q = S.q3d || {}, a = q.def ? `★ ${q.def[0]} sur ${q.def[1]} définitions allumées` : '', b = q.last ? `${a ? 'quiz' : 'Dernier quiz 3D'} : ${q.last[0]} sur ${q.last[1]}` : '';
+  return [a, b].filter(Boolean).join(' · ') || (MODEL3D.vivant ? 'Allume les définitions de ton cours, une à une' : 'Le système solaire à manipuler avec tes doigts');
+}
+function close3D() { const ov = $('.o3d'); if (ov) ov.remove(); PAUSED = false; }
+// Le modèle peut envoyer le pointage de son quiz : une petite récompense, une fois par jour
+addEventListener('message', e => {
+  try {
+    if (e.origin !== location.origin && location.protocol !== 'file:') return; const d = e.data;
+    if (!d || d.source !== 'astro3d') return;
+    if (d.type === 'definition') { // une définition « allumée » en entier dans le modèle : on note le progrès, et une petite récompense la première fois pour ce mot
+      const al = Math.floor(+d.allumees), tot = Math.floor(+d.total), mot = String(d.mot || '');
+      if (!(tot > 0) || !(al >= 0) || al > tot || tot > 100 || !/^[a-z]{2,20}$/.test(mot)) return;
+      S.q3d = S.q3d || {}; S.q3d.def = [al, tot]; S.q3d.mots = S.q3d.mots || []; let g = 0;
+      if (S.q3d.mots.indexOf(mot) < 0 && S.q3d.mots.length < 60) { S.q3d.mots.push(mot); g = 1; walAdd(1); }
+      save(); const b = $('.o3dt'); if (b) b.textContent = `★ Définitions allumées : ${al} sur ${tot}` + (g ? ` · +${units(1)}` : '');
+      return;
+    }
+    if (d.type !== 'quiz') return; const bons = Math.floor(+d.bons), total = Math.floor(+d.total);
+    if (!(total > 0) || !(bons >= 0) || bons > total || total > 200) return;
+    S.q3d = S.q3d || {}; const t = today(); let gain = 0;
+    if (S.q3d.day !== t && bons / total >= .6) { gain = bons === total ? 3 : 2; walAdd(gain); S.q3d.day = t; }
+    S.q3d.best = Math.max(S.q3d.best || 0, Math.round(100 * bons / total)); S.q3d.last = [bons, total]; save();
+    const bar = $('.o3dt'); if (bar) bar.textContent = `Quiz 3D : ${bons} sur ${total}` + (gain ? ` · +${units(gain)}` : '');
+  } catch (x) { }
+});
+
+// Dans les fiches, chaque définition a son bouton « Voir en 3D » : il ouvre le modèle sur ce mot du cours
+document.addEventListener('click', e => { const b = e.target && e.target.closest && e.target.closest('[data-a3d]'); if (b && MODEL3D.ok) { sfx('tap'); open3D(b.dataset.a3d); } });
+
 /* ---------- Démarrage ---------- */
 function boot() {
   applyTheme(); applyPerf(); bgInit();
@@ -4427,7 +5103,7 @@ function boot() {
   addEventListener('unhandledrejection', e => noteErr(e.reason));
   try { if (S.onboarded && !S.seenChapters.includes('europe')) screenNewChapter(); else if (S.onboarded) screenHome(); else screenWelcome(); } catch (e) { showCrash(e); }
   if ('serviceWorker' in navigator && HOSTED) navigator.serviceWorker.register('sw.js').catch(() => { });
-  setTimeout(checkUpdate, 1500);
+  setTimeout(checkUpdate, 1500); check3D();
   document.addEventListener('visibilitychange', () => { if (!document.hidden) checkUpdate(); });
 }
 
